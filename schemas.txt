@@ -1,0 +1,4625 @@
+﻿
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:29:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:30:C
+REATE TABLE `accounts` 
+(
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:31: 
+ `id` int(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:32: 
+ `head_id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:33: 
+ `account_code` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:34: 
+ `title` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:35: 
+ `type` 
+enum('Debit','Credit') 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:36: 
+ `opening_balance` 
+decimal(15,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:37: 
+ `status` tinyint(1) 
+NOT NULL DEFAULT 1,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:38: 
+ `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:39: 
+ `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:40:)
+ ENGINE=InnoDB DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:41:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:42:-
+-
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:43:-
+- Dumping data for 
+table `accounts`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:44:-
+-
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:45:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:46:I
+NSERT INTO `accounts` 
+(`id`, `head_id`, 
+`account_code`, 
+`title`, `type`, 
+`opening_balance`, 
+`status`, 
+`created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:47:(
+1, 1, 
+'Expense-material', 
+'for shop material 
+expense', 'Debit', 
+0.00, 1, '2026-03-05 
+04:57:26', '2026-03-07 
+21:58:59');
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:48:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:49:-
+- ---------------------
+-----------------------
+------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:50:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:54:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:55:C
+REATE TABLE 
+`account_heads` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:56: 
+ `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:57: 
+ `name` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:58: 
+ `type` varchar(255) 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:59: 
+ `status` tinyint(1) 
+NOT NULL DEFAULT 1,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:60: 
+ `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:61: 
+ `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:62:)
+ ENGINE=InnoDB DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:63:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:64:-
+-
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:65:-
+- Dumping data for 
+table `account_heads`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:66:-
+-
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:67:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:68:I
+NSERT INTO 
+`account_heads` (`id`, 
+`name`, `type`, 
+`status`, 
+`created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:69:(
+1, 'Expense', NULL, 1, 
+'2026-03-05 04:56:42', 
+'2026-03-05 04:56:42');
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:70:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:71:-
+- ---------------------
+-----------------------
+------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:72:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:73:-
+-
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:74:-
+- Table structure for 
+table `branches`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:75:-
+-
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:76:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:77:C
+REATE TABLE `branches` 
+(
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:78: 
+ `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:79: 
+ `name` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:80: 
+ `address` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:81: 
+ `number` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:82: 
+ `user_id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:83: 
+ `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:84: 
+ `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:85:)
+ ENGINE=InnoDB DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:86:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:87:-
+- ---------------------
+-----------------------
+------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:88:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:89:-
+-
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:90:-
+- Table structure for 
+table `brands`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:91:-
+-
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:92:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:93:C
+REATE TABLE `brands` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:94: 
+ `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:95: 
+ `name` text NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:96: 
+ `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:97: 
+ `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:98:)
+ ENGINE=InnoDB DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:99:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:100:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:101:
+-- Dumping data for 
+table `brands`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:102:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:103:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:104:
+INSERT INTO `brands` 
+(`id`, `name`, 
+`created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:105:
+(1, 'Fizup', 
+'2026-02-25 23:46:17', 
+'2026-02-25 23:46:17'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:106:
+(2, 'pepsi', 
+'2026-02-25 23:46:25', 
+'2026-02-25 23:46:25'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:107:
+(3, 'bin Sultan', 
+'2026-02-27 14:50:05', 
+'2026-02-27 14:50:05'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:108:
+(4, 'bin sultan', 
+'2026-02-28 20:55:52', 
+'2026-02-28 20:55:52');
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:109:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:110:
+-- --------------------
+-----------------------
+-------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:111:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:112:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:113:
+-- Table structure for 
+table `categories`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:115:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:116:
+CREATE TABLE 
+`categories` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:117:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:118:
+  `name` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:119:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:120:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:121:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:122:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:123:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:124:
+-- Dumping data for 
+table `categories`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:125:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:126:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:127:
+INSERT INTO 
+`categories` (`id`, 
+`name`, `created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:128:
+(1, 'Cold Drink', 
+'2026-02-25 23:45:38', 
+'2026-02-25 23:45:38'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:129:
+(2, 'Drinks', 
+'2026-02-25 23:45:56', 
+'2026-02-25 23:45:56'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:130:
+(3, 'Cake', 
+'2026-02-27 14:49:34', 
+'2026-02-27 14:49:34'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:131:
+(4, 'sweets', 
+'2026-02-28 20:52:59', 
+'2026-02-28 20:52:59'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:132:
+(5, 'namkeen', 
+'2026-02-28 22:00:06', 
+'2026-02-28 22:00:06');
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:133:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:134:
+-- --------------------
+-----------------------
+-------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:135:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:136:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:139:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:140:
+CREATE TABLE 
+`customers` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:141:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:142:
+  `customer_id` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:143:
+  `customer_name` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:144:
+  `customer_name_ur` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:145:
+  `cnic` varchar(255) 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:146:
+  `filer_type` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:147:
+  `zone` varchar(255) 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:148:
+  `contact_person` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:149:
+  `mobile` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:150:
+  `email_address` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:151:
+  `contact_person_2` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:152:
+  `mobile_2` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:153:
+  `email_address_2` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:154:
+  `customer_type` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:155:
+  `customer_category` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:156:
+  `opening_balance` 
+decimal(15,2) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:157:
+  `address` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:158:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:159:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:160:
+  `status` enum('active
+','inactive') NOT NULL 
+DEFAULT 'active'
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:168:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:169:
+CREATE TABLE 
+`customer_ledgers` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:170:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:171:
+  `customer_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:172:
+  `admin_or_user_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:173:
+  `previous_balance` 
+decimal(12,2) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:174:
+  `closing_balance` 
+decimal(12,2) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:175:
+  `opening_balance` 
+decimal(15,2) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:176:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:177:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:178:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:179:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:180:
+-- --------------------
+-----------------------
+-------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:181:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:182:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:183:
+-- Table structure for 
+table 
+`customer_payments`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:184:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:185:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:186:
+CREATE TABLE 
+`customer_payments` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:187:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:188:
+  `received_no` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:189:
+  `customer_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:190:
+  `admin_or_user_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:191:
+  `amount` 
+decimal(12,2) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:192:
+  `payment_method` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:193:
+  `payment_date` date 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:194:
+  `note` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:195:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:196:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:197:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:198:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:199:
+-- --------------------
+-----------------------
+-------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:200:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:201:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:202:
+-- Table structure for 
+table 
+`expense_vouchers`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:203:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:204:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:205:
+CREATE TABLE 
+`expense_vouchers` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:206:
+  `id` int(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:207:
+  `evid` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:208:
+  `entry_date` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:209:
+  `date` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:210:
+  `type` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:211:
+  `party_id` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:212:
+  `tel` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:213:
+  `remarks` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:214:
+  `narration_id` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:215:
+  `row_account_head` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:216:
+  `row_account_id` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:217:
+  `amount` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:218:
+  `total_amount` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:219:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:220:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:221:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:222:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:223:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:224:
+-- Dumping data for 
+table 
+`expense_vouchers`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:225:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:236:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:237:
+CREATE TABLE 
+`failed_jobs` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:238:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:239:
+  `uuid` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:240:
+  `connection` text 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:241:
+  `queue` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:242:
+  `payload` longtext 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:243:
+  `exception` longtext 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:244:
+  `failed_at` 
+timestamp NOT NULL 
+DEFAULT 
+current_timestamp()
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:245:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:246:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:247:
+-- --------------------
+-----------------------
+-------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:248:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:249:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:250:
+-- Table structure for 
+table 
+`inward_gatepasses`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:251:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:252:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:253:
+CREATE TABLE 
+`inward_gatepasses` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:254:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:255:
+  `item_discount` 
+decimal(10,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:256:
+  `transport_name` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:257:
+  `invoice_no` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:258:
+  `branch_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:259:
+  `warehouse_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:260:
+  `vendor_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:261:
+  `purchase_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:262:
+  `gatepass_date` date 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:263:
+  `company_invoice_no` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:264:
+  `gatepass_no` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:265:
+  `remarks` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:266:
+  `receive_type` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:267:
+  `subtotal` 
+decimal(15,2) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:268:
+  `discount` 
+decimal(15,2) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:269:
+  `extra_cost` 
+decimal(15,2) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:270:
+  `net_amount` 
+decimal(15,2) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:271:
+  `paid_amount` 
+decimal(15,2) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:272:
+  `due_amount` 
+decimal(15,2) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:273:
+  `note` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:287:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:288:
+CREATE TABLE `inward_ga
+tepass_items` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:289:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:290:
+  `inward_gatepass_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:291:
+  `product_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:292:
+  `variant_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:293:
+  `price` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:294:
+  `qty` decimal(10,2) 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:295:
+  `note` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:296:
+  `discount_type` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:297:
+  `discount_value` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:298:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:299:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:300:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:301:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:302:
+-- --------------------
+-----------------------
+-------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:303:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:304:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:305:
+-- Table structure for 
+table `migrations`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:306:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:307:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:308:
+CREATE TABLE 
+`migrations` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:309:
+  `id` int(10) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:310:
+  `migration` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:311:
+  `batch` int(11) NOT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:312:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:313:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:314:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:315:
+-- Dumping data for 
+table `migrations`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:316:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:317:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:318:
+INSERT INTO 
+`migrations` (`id`, 
+`migration`, `batch`) 
+VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:319:
+(1, '2014_10_12_000000_
+create_users_table', 
+1),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:320:
+(2, '2014_10_12_100000_
+create_password_reset_t
+okens_table', 1),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:321:
+(3, '2019_08_19_000000_
+create_failed_jobs_tabl
+e', 1),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:322:
+(4, '2019_12_14_000001_
+create_personal_access_
+tokens_table', 1),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:323:
+(5, '2025_07_18_203013_
+create_categories_table
+', 1),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:324:
+(6, '2025_07_18_215154_
+create_brands_table', 
+1),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:325:
+(7, '2025_07_18_220702_
+create_units_table', 
+1),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:326:
+(8, '2025_07_18_231906_
+create_subcategories_ta
+ble', 1),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:327:
+(9, '2025_07_19_074903_
+create_products_table',
+ 1),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:328:
+(10, '2025_07_20_220859
+_create_vendors_table',
+ 1),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:394:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:395:
+CREATE TABLE `model_has
+_permissions` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:396:
+  `permission_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:397:
+  `model_type` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:398:
+  `model_id` 
+bigint(20) UNSIGNED 
+NOT NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:399:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:400:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:401:
+-- --------------------
+-----------------------
+-------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:402:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:403:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:404:
+-- Table structure for 
+table `model_has_roles`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:405:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:406:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:407:
+CREATE TABLE 
+`model_has_roles` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:408:
+  `role_id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:409:
+  `model_type` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:410:
+  `model_id` 
+bigint(20) UNSIGNED 
+NOT NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:411:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:412:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:413:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:414:
+-- Dumping data for 
+table `model_has_roles`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:415:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:416:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:417:
+INSERT INTO 
+`model_has_roles` 
+(`role_id`, 
+`model_type`, 
+`model_id`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:418:
+(1, 
+'App\\Models\\User', 
+1),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:419:
+(2, 
+'App\\Models\\User', 
+2),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:420:
+(3, 
+'App\\Models\\User', 
+5),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:421:
+(4, 
+'App\\Models\\User', 
+4),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:422:
+(5, 
+'App\\Models\\User', 
+7),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:423:
+(5, 
+'App\\Models\\User', 
+8);
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:424:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:425:
+-- --------------------
+-----------------------
+-------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:426:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:427:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:430:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:431:
+CREATE TABLE 
+`narrations` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:432:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:433:
+  `expense_head` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:434:
+  `narration` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:435:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:436:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:437:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:438:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:439:
+-- --------------------
+-----------------------
+-------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:440:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:441:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:442:
+-- Table structure for 
+table 
+`password_reset_tokens`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:443:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:444:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:445:
+CREATE TABLE `password_
+reset_tokens` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:446:
+  `email` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:447:
+  `token` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:448:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:449:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:450:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:451:
+-- --------------------
+-----------------------
+-------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:452:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:453:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:454:
+-- Table structure for 
+table 
+`payment_vouchers`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:455:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:456:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:457:
+CREATE TABLE 
+`payment_vouchers` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:458:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:459:
+  `pvid` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:460:
+  `receipt_date` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:461:
+  `entry_date` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:462:
+  `type` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:463:
+  `party_id` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:464:
+  `tel` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:465:
+  `remarks` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:466:
+  `narration_id` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:467:
+  `reference_no` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:468:
+  `row_account_head` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:469:
+  `row_account_id` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:470:
+  `discount_value` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:471:
+  `kg` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:472:
+  `rate` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:473:
+  `amount` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:474:
+  `total_amount` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:475:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:476:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:477:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:484:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:485:
+CREATE TABLE 
+`permissions` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:486:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:487:
+  `name` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:488:
+  `guard_name` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:489:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:490:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:491:
+) ENGINE=InnoDB 
+DEFAULT CHARSET=latin1 
+COLLATE=latin1_swedish_
+ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:492:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:493:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:494:
+-- Dumping data for 
+table `permissions`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:495:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:496:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:497:
+INSERT INTO 
+`permissions` (`id`, 
+`name`, `guard_name`, 
+`created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:498:
+(1, 'Products', 'web', 
+'2025-12-16 09:04:44', 
+'2025-12-16 09:04:44'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:499:
+(2, 'Discount 
+Products', 'web', 
+'2025-12-16 09:04:53', 
+'2025-12-16 09:04:53'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:500:
+(3, 'Category', 'web', 
+'2025-12-16 09:04:58', 
+'2025-12-16 09:04:58'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:501:
+(4, 'Sub Category', 
+'web', '2025-12-16 
+09:05:05', '2025-12-16 
+09:05:05'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:502:
+(5, 'Brands', 'web', 
+'2025-12-16 09:05:12', 
+'2025-12-16 09:05:12'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:503:
+(6, 'List Inwards', 
+'web', '2025-12-16 
+09:05:27', '2025-12-16 
+09:05:27'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:504:
+(7, 'Create Inward 
+Gatepass', 'web', 
+'2025-12-16 09:05:37', 
+'2025-12-16 09:05:37'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:505:
+(8, 'Purchase', 'web', 
+'2025-12-16 09:05:45', 
+'2025-12-16 09:05:45'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:534:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:535:
+CREATE TABLE `personal_
+access_tokens` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:536:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:537:
+  `tokenable_type` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:538:
+  `tokenable_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:539:
+  `name` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:540:
+  `token` varchar(64) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:541:
+  `abilities` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:542:
+  `last_used_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:543:
+  `expires_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:544:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:545:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:546:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:547:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:548:
+-- --------------------
+-----------------------
+-------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:549:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:550:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:551:
+-- Table structure for 
+table 
+`production_entries`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:552:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:553:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:554:
+CREATE TABLE 
+`production_entries` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:555:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:556:
+  `entry_no` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:557:
+  `production_date` 
+date NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:558:
+  `source` 
+varchar(255) NOT NULL 
+DEFAULT 'kitchen',
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:559:
+  `notes` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:560:
+  `created_by` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:561:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:562:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:563:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:564:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:565:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:566:
+-- Dumping data for 
+table 
+`production_entries`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:567:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:568:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:569:
+INSERT INTO 
+`production_entries` 
+(`id`, `entry_no`, 
+`production_date`, 
+`source`, `notes`, 
+`created_by`, 
+`created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:570:
+(1, 'PROD-20260305-0224
+14', '2026-03-05', 
+'kitchen', 'testing', 
+1, '2026-03-04 
+21:24:14', '2026-03-04 
+21:24:14'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:571:
+(2, 'PROD-20260305-1029
+02', '2026-03-05', 
+'kitchen', 'sdsd', 1, 
+'2026-03-05 05:29:02', 
+'2026-03-05 05:36:45');
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:572:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:573:
+-- --------------------
+-----------------------
+-------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:574:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:578:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:579:
+CREATE TABLE `productio
+n_entry_items` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:580:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:581:
+  
+`production_entry_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:582:
+  `product_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:583:
+  `variant_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:584:
+  `unit` varchar(255) 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:585:
+  `qty_entered` 
+decimal(12,3) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:586:
+  `qty_kg` 
+decimal(12,3) NOT NULL 
+DEFAULT 0.000,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:587:
+  `qty_stock` 
+decimal(12,3) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:588:
+  `notes` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:589:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:590:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:591:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:592:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:593:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:594:
+-- Dumping data for 
+table `production_entry
+_items`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:595:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:596:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:597:
+INSERT INTO `production
+_entry_items` (`id`, 
+`production_entry_id`, 
+`product_id`, 
+`variant_id`, `unit`, 
+`qty_entered`, 
+`qty_kg`, `qty_stock`, 
+`notes`, `created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:598:
+(1, 1, 5, NULL, 'Pc', 
+10.000, 0.000, 
+10000.000, 'testing', 
+'2026-03-04 21:24:14', 
+'2026-03-04 21:24:14'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:599:
+(3, 2, 5, NULL, 'Pc', 
+10.000, 0.000, 
+10000.000, 
+'tetingdsd', 
+'2026-03-05 05:36:45', 
+'2026-03-05 05:36:45');
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:606:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:607:
+CREATE TABLE 
+`products` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:608:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:609:
+  `creater_id` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:610:
+  `category_id` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:611:
+  `sub_category_id` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:612:
+  `brand_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:613:
+  `item_code` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:614:
+  `unit_id` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:615:
+  `unit_type` 
+varchar(50) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:616:
+  `item_name` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:617:
+  `color` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:618:
+  `price` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:619:
+  `alert_quantity` 
+int(11) DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:620:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:621:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:622:
+  `deleted_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:623:
+  `barcode_path` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:624:
+  `initial_stock` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:625:
+  `wholesale_price` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:626:
+  `image` varchar(255) 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:627:
+  `note` text DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:652:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:653:
+CREATE TABLE 
+`product_bookings` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:654:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:655:
+  `customer` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:656:
+  `reference` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:657:
+  `product` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:658:
+  `product_code` text 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:659:
+  `brand` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:660:
+  `unit` text NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:661:
+  `per_price` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:662:
+  `per_discount` text 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:663:
+  `qty` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:664:
+  `per_total` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:665:
+  `color` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:666:
+  `total_amount_Words` 
+text NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:667:
+  `total_bill_amount` 
+text NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:668:
+  
+`total_extradiscount` 
+text NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:669:
+  `total_net` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:670:
+  `advance_payment` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:671:
+  `cash` text NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:672:
+  `card` text NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:673:
+  `change` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:696:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:697:
+CREATE TABLE 
+`product_discounts` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:698:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:699:
+  `discount_code` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:700:
+  `product_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:701:
+  `actual_price` 
+decimal(10,2) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:702:
+  
+`discount_percentage` 
+decimal(5,2) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:703:
+  `discount_amount` 
+decimal(10,2) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:704:
+  `final_price` 
+decimal(10,2) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:705:
+  `total_discount` 
+decimal(15,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:706:
+  `date` date NOT NULL 
+DEFAULT curdate(),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:707:
+  `status` tinyint(1) 
+NOT NULL DEFAULT 1,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:708:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:709:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:710:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:711:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:712:
+-- --------------------
+-----------------------
+-------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:713:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:714:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:715:
+-- Table structure for 
+table 
+`product_variants`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:716:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:717:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:718:
+CREATE TABLE 
+`product_variants` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:719:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:720:
+  `product_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:721:
+  `variant_name` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:722:
+  `size_label` 
+varchar(100) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:723:
+  `size_value` 
+decimal(10,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:724:
+  `size_unit` 
+varchar(50) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:725:
+  `price` 
+decimal(12,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:726:
+  `wholesale_price` 
+decimal(12,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:727:
+  `cost_price` 
+decimal(12,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:728:
+  `stock_qty` 
+decimal(10,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:729:
+  `alert_quantity` 
+int(11) NOT NULL 
+DEFAULT 0,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:730:
+  `is_default` 
+tinyint(1) NOT NULL 
+DEFAULT 0,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:731:
+  `is_active` 
+tinyint(1) NOT NULL 
+DEFAULT 1,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:732:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:733:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:734:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:735:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:736:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:737:
+-- Dumping data for 
+table 
+`product_variants`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:738:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:773:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:774:
+CREATE TABLE 
+`purchases` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:775:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:776:
+  `branch_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:777:
+  `warehouse_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:778:
+  `purchase_to` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:779:
+  `vendor_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:780:
+  `purchase_date` date 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:781:
+  `invoice_no` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:782:
+  `note` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:783:
+  `subtotal` 
+decimal(12,2) DEFAULT 
+0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:784:
+  `discount` 
+decimal(12,2) DEFAULT 
+0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:785:
+  `extra_cost` 
+decimal(12,2) DEFAULT 
+0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:786:
+  `net_amount` 
+decimal(12,2) DEFAULT 
+0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:787:
+  `paid_amount` 
+decimal(12,2) DEFAULT 
+0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:788:
+  `due_amount` 
+decimal(12,2) DEFAULT 
+0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:789:
+  `status_purchase` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:790:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:791:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:792:
+  `deleted_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:793:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:794:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:807:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:808:
+CREATE TABLE 
+`purchase_items` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:809:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:810:
+  `purchase_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:811:
+  `product_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:812:
+  `variant_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:813:
+  `unit` varchar(255) 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:814:
+  `price` 
+decimal(12,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:815:
+  `item_discount` 
+decimal(12,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:816:
+  `qty` int(11) NOT 
+NULL DEFAULT 0,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:817:
+  `note` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:818:
+  `line_total` 
+decimal(12,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:819:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:820:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:821:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:822:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:823:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:824:
+-- Dumping data for 
+table `purchase_items`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:825:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:826:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:827:
+INSERT INTO 
+`purchase_items` 
+(`id`, `purchase_id`, 
+`product_id`, 
+`variant_id`, `unit`, 
+`price`, 
+`item_discount`, 
+`qty`, `note`, 
+`line_total`, 
+`created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:828:
+(1, 1, 11, 26, 
+'metrial smonsa', 
+120000.00, 0.00, 1, 
+NULL, 120000.00, 
+'2026-03-07 21:51:41', 
+'2026-03-07 21:51:41');
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:835:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:836:
+CREATE TABLE 
+`purchase_returns` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:837:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:838:
+  `purchase_id` 
+bigint(20) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:839:
+  `vendor_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:840:
+  `return_invoice` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:841:
+  `return_date` date 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:842:
+  `return_reason` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:843:
+  `transport` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:844:
+  `vehicle_no` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:845:
+  `driver_name` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:846:
+  `delivery_person` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:847:
+  `warehouse_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:848:
+  `bill_amount` 
+decimal(12,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:849:
+  `item_discount` 
+decimal(12,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:850:
+  `extra_discount` 
+decimal(12,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:851:
+  `net_amount` 
+decimal(12,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:852:
+  `paid` decimal(12,2) 
+NOT NULL DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:853:
+  `balance` 
+decimal(12,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:854:
+  `remarks` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:855:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:856:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:864:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:865:
+CREATE TABLE `purchase_
+return_items` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:866:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:867:
+  `purchase_return_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:868:
+  `product_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:869:
+  `unit` varchar(255) 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:870:
+  `qty` int(11) NOT 
+NULL DEFAULT 0,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:871:
+  `note` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:872:
+  `price` 
+decimal(12,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:873:
+  `item_discount` 
+decimal(12,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:874:
+  `line_total` 
+decimal(12,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:875:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:876:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:877:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:878:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:879:
+-- --------------------
+-----------------------
+-------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:880:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:881:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:882:
+-- Table structure for 
+table 
+`receipts_vouchers`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:883:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:884:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:885:
+CREATE TABLE 
+`receipts_vouchers` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:886:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:887:
+  `rvid` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:888:
+  `receipt_date` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:889:
+  `entry_date` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:890:
+  `type` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:891:
+  `party_id` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:892:
+  `tel` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:893:
+  `remarks` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:894:
+  `narration_id` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:895:
+  `reference_no` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:896:
+  `row_account_head` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:897:
+  `row_account_id` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:898:
+  `discount_value` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:899:
+  `kg` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:900:
+  `rate` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:901:
+  `amount` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:902:
+  `total_amount` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:903:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:904:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:905:
+) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:912:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:913:
+CREATE TABLE `roles` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:914:
+  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:915:
+  `name` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:916:
+  `guard_name` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:917:
+  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:918:
+  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:919:
+) ENGINE=InnoDB 
+DEFAULT CHARSET=latin1 
+COLLATE=latin1_swedish_
+ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:920:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:921:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:922:
+-- Dumping data for 
+table `roles`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:923:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:924:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:925:
+INSERT INTO `roles` 
+(`id`, `name`, 
+`guard_name`, 
+`created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:926:
+(1, 'Admin', 'web', 
+'2025-12-16 10:14:16', 
+'2025-12-16 10:14:16'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:927:
+(2, 'Accountant', 
+'web', '2025-12-16 
+10:14:27', '2025-12-16 
+10:14:27'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:928:
+(3, 'Manager', 'web', 
+'2025-12-20 22:58:48', 
+'2025-12-20 22:58:48'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:929:
+(4, 'Assistant 
+accountant', 'web', 
+'2025-12-20 22:58:59', 
+'2025-12-20 22:58:59'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:930:
+(5, 'Cashier', 'web', 
+'2025-12-20 22:59:08', 
+'2025-12-20 22:59:08');
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:931:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:932:
+-- --------------------
+-----------------------
+-------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:933:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:937:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:938:
+CREATE TABLE 
+`role_has_permissions` 
+(
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:939:
+  `permission_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:940:
+  `role_id` bigint(20) 
+UNSIGNED NOT NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:941:
+) ENGINE=InnoDB 
+DEFAULT CHARSET=latin1 
+COLLATE=latin1_swedish_
+ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:942:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:943:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:944:
+-- Dumping data for 
+table 
+`role_has_permissions`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:945:
+--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:946:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:947:
+INSERT INTO 
+`role_has_permissions` 
+(`permission_id`, 
+`role_id`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:948:
+(1, 1),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:949:
+(1, 2),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:950:
+(1, 3),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:951:
+(1, 4),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:952:
+(2, 1),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:953:
+(2, 2),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:954:
+(2, 3),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:955:
+(2, 4),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:956:
+(2, 5),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:957:
+(3, 1),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:958:
+(3, 2),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1043
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1044
+:CREATE TABLE `sales` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1045
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1046
+:  `user_id` int(255) 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1047
+:  `invoice_no` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1048
+:  `customer` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1049
+:  `reference` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1050
+:  `product` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1051
+:  `variant_id` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1052
+:  `product_code` text 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1053
+:  `brand` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1054
+:  `unit` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1055
+:  `per_price` text 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1056
+:  `per_discount` text 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1057
+:  `qty` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1058
+:  `per_total` text 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1059
+:  
+`total_amount_Words` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1060
+:  `total_bill_amount` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1061
+:  
+`total_extradiscount` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1062
+:  `total_net` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1063
+:  `cash` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1064
+:  `card` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1105
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1106
+:CREATE TABLE 
+`sales_officers` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1107
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1108
+:  `name` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1109
+:  `name_urdu` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1110
+:  `mobile` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1111
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1112
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1113
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1114
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1115
+:-- -------------------
+-----------------------
+--------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1116
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1117
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1118
+:-- Table structure 
+for table 
+`sales_returns`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1119
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1120
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1121
+:CREATE TABLE 
+`sales_returns` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1122
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1123
+:  `sale_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1124
+:  `customer` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1125
+:  `reference` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1126
+:  `product` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1127
+:  `product_code` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1128
+:  `brand` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1129
+:  `unit` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1130
+:  `per_price` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1131
+:  `per_discount` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1132
+:  `qty` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1133
+:  `per_total` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1134
+:  
+`total_amount_Words` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1135
+:  `total_bill_amount` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1136
+:  
+`total_extradiscount` 
+text DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1137
+:  `total_net` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1138
+:  `cash` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1139
+:  `card` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1140
+:  `change` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1141
+:  `color` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1160
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1161
+:CREATE TABLE `stocks` 
+(
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1162
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1163
+:  `branch_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1164
+:  `warehouse_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1165
+:  `product_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1166
+:  `variant_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1167
+:  `qty` decimal(10,2) 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1168
+:  `reserved_qty` 
+int(11) DEFAULT 0,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1169
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1170
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1171
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1172
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1173
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1174
+:-- Dumping data for 
+table `stocks`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1175
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1176
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1177
+:INSERT INTO `stocks` 
+(`id`, `branch_id`, 
+`warehouse_id`, 
+`product_id`, 
+`variant_id`, `qty`, 
+`reserved_qty`, 
+`created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1178
+:(1, NULL, NULL, 4, 
+11, -13.00, 0, 
+'2026-03-04 19:50:17', 
+'2026-03-04 20:18:57'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1179
+:(2, NULL, NULL, 2, 6, 
+-36.00, 0, '2026-03-04 
+19:50:17', '2026-03-04 
+22:27:04'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1180
+:(3, NULL, NULL, 3, 8, 
+-11.00, 0, '2026-03-04 
+19:50:17', '2026-03-04 
+20:12:16'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1181
+:(4, NULL, NULL, 1, 3, 
+-1.00, 0, '2026-03-04 
+20:11:10', '2026-03-04 
+20:11:10'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1213
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1214
+:CREATE TABLE 
+`stock_adjustments` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1215
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1216
+:  `ref_no` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1217
+:  `adjustment_date` 
+date NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1218
+:  `type` enum('increas
+e','decrease') NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1219
+:  `reason` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1220
+:  `notes` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1221
+:  `created_by` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1222
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1223
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1224
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1225
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1226
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1227
+:-- Dumping data for 
+table 
+`stock_adjustments`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1228
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1229
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1230
+:INSERT INTO 
+`stock_adjustments` 
+(`id`, `ref_no`, 
+`adjustment_date`, 
+`type`, `reason`, 
+`notes`, `created_by`, 
+`created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1231
+:(1, 
+'ADJ-20260305-001', 
+'2026-03-05', 
+'increase', 'Wastage', 
+NULL, 1, '2026-03-05 
+05:52:38', '2026-03-05 
+05:52:38'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1232
+:(2, 
+'ADJ-20260305-002', 
+'2026-03-05', 
+'decrease', 'Wastage', 
+NULL, 1, '2026-03-05 
+05:54:01', '2026-03-05 
+05:54:01');
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1233
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1234
+:-- -------------------
+-----------------------
+--------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1239
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1240
+:CREATE TABLE `stock_ad
+justment_items` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1241
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1242
+:  `adjustment_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1243
+:  `product_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1244
+:  `variant_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1245
+:  `unit` varchar(255) 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1246
+:  `qty` decimal(12,3) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1247
+:  `qty_stock` 
+decimal(12,3) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1248
+:  `notes` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1249
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1250
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1251
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1252
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1253
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1254
+:-- Dumping data for 
+table `stock_adjustment
+_items`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1255
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1256
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1257
+:INSERT INTO `stock_adj
+ustment_items` (`id`, 
+`adjustment_id`, 
+`product_id`, 
+`variant_id`, `unit`, 
+`qty`, `qty_stock`, 
+`notes`, `created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1258
+:(1, 1, 5, NULL, 'Pc', 
+0.503, 503.000, NULL, 
+'2026-03-05 05:52:38', 
+'2026-03-05 05:52:38'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1259
+:(2, 2, 5, NULL, 'Pc', 
+0.006, 6.000, NULL, 
+'2026-03-05 05:54:01', 
+'2026-03-05 05:54:01');
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1260
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1266
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1267
+:CREATE TABLE 
+`stock_transfers` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1268
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1269
+:  `from_warehouse_id` 
+varchar(50) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1270
+:  `transfer_to` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1271
+:  `to_warehouse_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1272
+:  `to_shop` 
+tinyint(1) NOT NULL 
+DEFAULT 0,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1273
+:  `product_id` 
+longtext CHARACTER SET 
+utf8mb4 COLLATE 
+utf8mb4_bin NOT NULL 
+CHECK (json_valid(`prod
+uct_id`)),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1274
+:  `quantity` longtext 
+CHARACTER SET utf8mb4 
+COLLATE utf8mb4_bin 
+NOT NULL CHECK (json_va
+lid(`quantity`)),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1275
+:  `remarks` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1276
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1277
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1278
+:  `shop_name` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1279
+:  `admin_notified` 
+tinyint(1) NOT NULL 
+DEFAULT 0
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1280
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1281
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1282
+:-- -------------------
+-----------------------
+--------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1283
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1284
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1285
+:-- Table structure 
+for table 
+`subcategories`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1286
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1287
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1288
+:CREATE TABLE 
+`subcategories` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1289
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1290
+:  `name` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1291
+:  `category_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1292
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1293
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1294
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1295
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1296
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1297
+:-- Dumping data for 
+table `subcategories`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1298
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1299
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1300
+:INSERT INTO 
+`subcategories` (`id`, 
+`name`, `category_id`, 
+`created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1301
+:(1, 'Cold Drinks', 2, 
+'2026-02-25 23:46:08', 
+'2026-02-25 23:46:08'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1302
+:(2, 'Choclate Cake', 
+3, '2026-02-27 
+14:49:43', '2026-02-27 
+14:49:43'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1303
+:(3, 'ghulab jamon', 
+4, '2026-02-28 
+20:55:33', '2026-02-28 
+20:55:33'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1304
+:(4, 'patees', 5, 
+'2026-02-28 22:02:29', 
+'2026-02-28 22:02:29'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1305
+:(5, 'kalkan', 4, 
+'2026-03-07 21:01:45', 
+'2026-03-07 21:01:45'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1306
+:(6, 'barfi', 4, 
+'2026-03-07 21:07:44', 
+'2026-03-07 21:07:44'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1307
+:(7, 'samoosa', 5, 
+'2026-03-07 21:23:07', 
+'2026-03-07 21:23:07');
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1308
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1314
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1315
+:CREATE TABLE `tables` 
+(
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1316
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1317
+:  `table_name` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1318
+:  `status` 
+varchar(255) NOT NULL 
+DEFAULT 'available',
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1319
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1320
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1321
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1322
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1323
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1324
+:-- Dumping data for 
+table `tables`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1325
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1326
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1327
+:INSERT INTO `tables` 
+(`id`, `table_name`, 
+`status`, 
+`created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1328
+:(1, 'Table no 1 (Row 
+1)', 'available', 
+'2026-03-01 01:49:25', 
+'2026-03-05 05:23:49'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1329
+:(2, 'Table no 2 (row 
+no 1)', 'available', 
+'2026-03-01 01:49:48', 
+'2026-03-05 14:12:17'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1330
+:(3, 'table no 3', 
+'available', 
+'2026-03-07 22:00:06', 
+'2026-03-07 22:00:06');
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1331
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1332
+:-- -------------------
+-----------------------
+--------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1333
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1334
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1335
+:-- Table structure 
+for table `transports`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1337
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1338
+:CREATE TABLE 
+`transports` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1339
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1340
+:  `admin_or_user_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1341
+:  `company_name` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1342
+:  `name` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1343
+:  `name_ur` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1344
+:  `email` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1345
+:  `mobile` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1346
+:  `address` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1347
+:  `address_ur` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1348
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1349
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1350
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1351
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1352
+:-- -------------------
+-----------------------
+--------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1353
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1354
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1355
+:-- Table structure 
+for table `units`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1356
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1357
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1358
+:CREATE TABLE `units` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1359
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1360
+:  `name` text NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1361
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1362
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1363
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1364
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1365
+:-- -------------------
+-----------------------
+--------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1366
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1367
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1368
+:-- Table structure 
+for table `users`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1369
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1370
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1371
+:CREATE TABLE `users` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1372
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1373
+:  `name` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1374
+:  `email` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1375
+:  `email_verified_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1376
+:  `usertype` 
+varchar(255) NOT NULL 
+DEFAULT 'admin',
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1377
+:  `password` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1378
+:  `remember_token` 
+varchar(100) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1379
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1380
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1381
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1382
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1383
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1384
+:-- Dumping data for 
+table `users`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1385
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1386
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1387
+:INSERT INTO `users` 
+(`id`, `name`, 
+`email`, 
+`email_verified_at`, 
+`usertype`, 
+`password`, 
+`remember_token`, 
+`created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1388
+:(1, 'Admin', 
+'admin@admin.com', 
+NULL, 'admin', '$2y$10$
+h98HpO12w5S70cNl7oHdx.0
+RqfQeIbvqIN3k4XBWMpO7U3
+UEHHu4.', NULL, 
+'2025-09-07 16:07:28', 
+'2026-01-22 08:25:32'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1389
+:(2, 'Talib', 'Talib@wi
+jdanstore.pk', NULL, 
+'admin', '$2y$10$aFkS8R
+7j0MofZtTGEchWJukVNFDw9
+FTePemT8.ZvZFk9szyBEHNQ
+y', NULL, '2025-09-11 
+16:30:55', '2026-01-22 
+08:16:04'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1390
+:(4, 'Danish', 'danish@
+wijdanstore.pk', NULL, 
+'admin', '$2y$10$i7ueWB
+70EytWvGEjbXvl6.44voW9J
+Z8fL/AwqAa6QHVmty.C9ClX
+C', NULL, '2025-12-16 
+13:18:03', '2026-01-22 
+08:19:28'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1391
+:(5, 'usama naskani', '
+wijdanexclusive@gmail.c
+om', NULL, 'admin', '$2
+y$10$T1HesHHbJ6v/YbY0BF
+lgjeaT3G43Dl/7IDaCModWU
+.HKnAOd6t7fe', NULL, 
+'2025-12-28 10:05:40', 
+'2026-02-21 08:31:20'),
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1401
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1402
+:CREATE TABLE `user_ope
+ning_balances` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1403
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1404
+:  `user_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1405
+:  `amount` 
+decimal(15,2) NOT NULL 
+DEFAULT 0.00,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1406
+:  `date` date NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1407
+:  `note` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1408
+:  `created_by` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1409
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1410
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1411
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1412
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1413
+:-- -------------------
+-----------------------
+--------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1414
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1415
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1416
+:-- Table structure 
+for table `vendors`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1417
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1418
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1419
+:CREATE TABLE 
+`vendors` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1420
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1421
+:  `name` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1422
+:  `email` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1423
+:  `phone` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1424
+:  `address` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1425
+:  `opening_balance` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1426
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1427
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1428
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1429
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1430
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1431
+:-- Dumping data for 
+table `vendors`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1432
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1433
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1434
+:INSERT INTO `vendors` 
+(`id`, `name`, 
+`email`, `phone`, 
+`address`, 
+`opening_balance`, 
+`created_at`, 
+`updated_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1435
+:(1, 'Hassan khan', 
+NULL, '03114057398', 
+NULL, '10000', 
+'2026-03-07 20:57:55', 
+'2026-03-07 20:57:55');
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1436
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1437
+:-- -------------------
+-----------------------
+--------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1438
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1439
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1442
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1443
+:CREATE TABLE 
+`vendor_bilties` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1444
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1445
+:  `vendor_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1446
+:  `purchase_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1447
+:  `bilty_no` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1448
+:  `vehicle_no` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1449
+:  `transporter_name` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1450
+:  `delivery_date` 
+date DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1451
+:  `note` text DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1452
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1453
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1454
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1455
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1456
+:-- -------------------
+-----------------------
+--------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1457
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1458
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1459
+:-- Table structure 
+for table 
+`vendor_ledgers`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1460
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1461
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1462
+:CREATE TABLE 
+`vendor_ledgers` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1463
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1464
+:  `admin_or_user_id` 
+text NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1465
+:  `vendor_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1466
+:  `opening_balance` 
+text NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1467
+:  `previous_balance` 
+text NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1468
+:  `closing_balance` 
+text NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1469
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1470
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1471
+:  `deleted_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1472
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1473
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1474
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1475
+:-- Dumping data for 
+table `vendor_ledgers`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1476
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1477
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1478
+:INSERT INTO 
+`vendor_ledgers` 
+(`id`, 
+`admin_or_user_id`, 
+`vendor_id`, 
+`opening_balance`, 
+`previous_balance`, 
+`closing_balance`, 
+`created_at`, 
+`updated_at`, 
+`deleted_at`) VALUES
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1479
+:(1, '1', 1, '10000', 
+'10000', '130000', 
+'2026-03-07 20:57:55', 
+'2026-03-07 21:51:41', 
+NULL);
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1480
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1481
+:-- -------------------
+-----------------------
+--------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1482
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1486
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1487
+:CREATE TABLE 
+`vendor_payments` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1488
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1489
+:  `payment_no` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1490
+:  `vendor_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1491
+:  `admin_or_user_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1492
+:  `payment_date` date 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1493
+:  `amount` 
+decimal(12,2) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1494
+:  `payment_method` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1495
+:  `note` varchar(255) 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1496
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1497
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1498
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1499
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1500
+:-- -------------------
+-----------------------
+--------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1501
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1502
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1503
+:-- Table structure 
+for table `vouchers`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1504
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1505
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1506
+:CREATE TABLE 
+`vouchers` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1507
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1508
+:  `voucher_type` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1509
+:  `sales_officer` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1510
+:  `date` date NOT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1511
+:  `type` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1512
+:  `person` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1513
+:  `sub_head` 
+varchar(255) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1514
+:  `narration` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1515
+:  `amount` 
+decimal(15,2) NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1516
+:  `status` 
+enum('draft','posted') 
+NOT NULL DEFAULT 
+'draft',
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1517
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1518
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1519
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1520
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1521
+:-- -------------------
+-----------------------
+--------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1522
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1523
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1524
+:-- Table structure 
+for table `warehouses`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1525
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1526
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1527
+:CREATE TABLE 
+`warehouses` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1528
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1529
+:  `branch_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1530
+:  `warehouse_name` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1531
+:  `creater_id` 
+bigint(20) UNSIGNED 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1532
+:  `location` 
+varchar(255) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1533
+:  `remarks` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1534
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1535
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1536
+:  `deleted_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1537
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1538
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1539
+:-- -------------------
+-----------------------
+--------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1540
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1541
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1542
+:-- Table structure 
+for table 
+`warehouse_stocks`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1543
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1544
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1545
+:CREATE TABLE 
+`warehouse_stocks` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1546
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1547
+:  `warehouse_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1548
+:  `product_id` 
+bigint(20) UNSIGNED 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1549
+:  `quantity` 
+decimal(10,2) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1550
+:  `price` 
+decimal(12,2) DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1551
+:  `remarks` text 
+DEFAULT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1552
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1553
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1554
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1555
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1556
+:-- -------------------
+-----------------------
+--------------
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1557
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1558
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1559
+:-- Table structure 
+for table `zones`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1560
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1561
+:
+> C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1562
+:CREATE TABLE `zones` (
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1563
+:  `id` bigint(20) 
+UNSIGNED NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1564
+:  `zone` varchar(255) 
+NOT NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1565
+:  `created_at` 
+timestamp NULL DEFAULT 
+NULL,
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1566
+:  `updated_at` 
+timestamp NULL DEFAULT 
+NULL
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1567
+:) ENGINE=InnoDB 
+DEFAULT 
+CHARSET=utf8mb4 COLLATE
+=utf8mb4_unicode_ci;
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1568
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1569
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1570
+:-- Indexes for dumped 
+tables
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1571
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1572
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1573
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1574
+:-- Indexes for table 
+`accounts`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1575
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1576
+:ALTER TABLE `accounts`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1577
+:  ADD PRIMARY KEY 
+(`id`);
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1578
+:
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1579
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1580
+:-- Indexes for table 
+`account_heads`
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1581
+:--
+  C:\Users\Admin\Downlo
+ads\bin_sultan.sql:1582
+:ALTER TABLE 
+`account_heads`
+
+

@@ -1,0 +1,33 @@
+=== PRODUCTS TABLE ===
+id -- bigint(20) unsigned
+creater_id -- text
+category_id -- text
+sub_category_id -- text
+brand_id -- bigint(20) unsigned
+item_code -- text
+unit_id -- text
+item_name -- text
+color -- text
+price -- text
+alert_quantity -- int(11)
+created_at -- timestamp
+updated_at -- timestamp
+deleted_at -- timestamp
+barcode_path -- varchar(255)
+initial_stock -- text
+wholesale_price -- text
+image -- varchar(255)
+note -- text
+
+=== STOCKS TABLE ===
+id -- bigint(20) unsigned
+branch_id -- bigint(20) unsigned
+warehouse_id -- bigint(20) unsigned
+product_id -- bigint(20) unsigned
+qty -- decimal(10,2)
+reserved_qty -- int(11)
+created_at -- timestamp
+updated_at -- timestamp
+
+=== product_variants check ===
+DOES NOT EXIST

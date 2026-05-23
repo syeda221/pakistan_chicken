@@ -1,0 +1,55 @@
+﻿Array
+(
+    [customer_payments] => Array
+        (
+            [0] => received_no
+        )
+
+    [inward_gatepasses] => Array
+        (
+            [0] => transport_name
+            [1] => company_invoice_no
+            [2] => receive_type
+        )
+
+    [inward_gatepass_items] => Array
+        (
+            [0] => discount_type
+        )
+
+    [personal_access_tokens] => Array
+        (
+            [0] => tokenable_type
+            [1] => tokenable_id
+        )
+
+    [product_bookings] => Array
+        (
+            [0] => total_pieces
+            [1] => total_yard
+            [2] => total_meter
+        )
+
+    [product_discounts] => Array
+        (
+            [0] => discount_code
+        )
+
+    [purchases] => Array
+        (
+            [0] => purchase_to
+        )
+
+    [sales] => Array
+        (
+            [0] => total_pieces
+            [1] => total_yard
+            [2] => total_meter
+        )
+
+    [vendor_payments] => Array
+        (
+            [0] => payment_no
+        )
+
+)
