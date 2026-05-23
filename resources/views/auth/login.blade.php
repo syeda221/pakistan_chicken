@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login | Bin Sultan Sweets & Bakers</title>
+    <title>Login | Pakistan Chicken </title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -202,7 +202,7 @@
     <div class="login-wrapper">
         <div class="login-card">
             <div class="brand-header">
-                <h2>Bin Sultan<span>.</span></h2>
+                <h2>Pakistan Chicken<span>.</span></h2>
                 <p>Bakery Management System</p>
             </div>
 

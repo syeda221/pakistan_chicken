@@ -69,7 +69,7 @@
 
 <!-- Black Professional Stamp -->
 <div class="stamp">
-   <img src="{{ asset('assets/images/stampBin Sultan.png') }}">
+   <img src="{{ asset('assets/images/stampPakistan Chicken.png') }}">
 </div>
 
 <!-- Main Receipt -->
@@ -77,7 +77,7 @@
 
     <!-- Header -->
     <div class="center">
-        <h2 style="margin:0;font-size:14px;" class="bold">Bin Sultan</h2>
+        <h2 style="margin:0;font-size:14px;" class="bold">Pakistan Chicken</h2>
         <p style="margin:0;">Sweet & Bakers</p>
         <p style="margin:0;">Latifabad no 6 Near Shadman Hall  Hyderabad</p>
         <p style="margin:0;">Phone: 022786661</p>

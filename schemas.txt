@@ -294,12 +294,12 @@ ads\bin_sultan.sql:106:
 '2026-02-25 23:46:25'),
   C:\Users\Admin\Downlo
 ads\bin_sultan.sql:107:
-(3, 'bin Sultan', 
+(3, 'Pakistan Chicken', 
 '2026-02-27 14:50:05', 
 '2026-02-27 14:50:05'),
   C:\Users\Admin\Downlo
 ads\bin_sultan.sql:108:
-(4, 'bin sultan', 
+(4, 'Pakistan Chicken', 
 '2026-02-28 20:55:52', 
 '2026-02-28 20:55:52');
   C:\Users\Admin\Downlo

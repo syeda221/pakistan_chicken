@@ -77,7 +77,7 @@
                     <div class="ribbon">BOOKED</div>
                 </div>
                 <div class="center">
-                    <div class="store-name">Bin Sultan</div>
+                    <div class="store-name">Pakistan Chicken</div>
                     <div class="store-info">Sweet & Bakers</div>
                     <div class="store-info">Latifabad no 6 Hyderabad</div>
                     <div class="receipt-title">Booking Confirmation</div>

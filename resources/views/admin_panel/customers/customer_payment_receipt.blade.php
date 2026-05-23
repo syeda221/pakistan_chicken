@@ -31,7 +31,7 @@
 
 <div id="receipt">
 
-    <div class="center bold">Bin Sultan Sweets & Bakers </div>
+    <div class="center bold">Pakistan Chicken  </div>
     <div class="center">Customer Payment Receipt</div>
     <div class="center">{{ now()->format('d-m-Y h:i A') }}</div>
 
@@ -82,7 +82,7 @@
     <div class="line"></div>
 
     <div class="center">
-        Paid To <strong>Bin Sultan Sweets & Bakers </strong>
+        Paid To <strong>Pakistan Chicken  </strong>
     </div>
     <div class="center">Thank You</div>
 

@@ -79,7 +79,7 @@
                     <div class="welcome-divider"></div>
 
                     <h1 class="welcome-title">
-                        Welcome to Bin Sultan Sweets & Bakers
+                        Welcome to Pakistan Chicken 
                     </h1>
 
                     <p class="welcome-subtitle">

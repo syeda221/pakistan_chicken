@@ -37,7 +37,7 @@
     </div>
 
     <div class="header">
-        <h2>Bin Sultan Sweets</h2>
+        <h2>Pakistan Chicken Sweets</h2>
         <p>Sale Closing Report</p>
         <p>Period: {{ $startDate }} to {{ $endDate }}</p>
         <p>User: {{ $userName }}</p>
@@ -76,7 +76,7 @@
     <p style="text-align: center; font-size: 10px; margin: 0;">Generated on: {{ date('d-M-Y H:i A') }}</p>
 
     <div class="footer">
-        <p>*** Bin Sultan Sweets ***</p>
+        <p>*** Pakistan Chicken Sweets ***</p>
         <p style="font-size: 11px; font-weight: normal; margin: 2px 0;">Develop By: ProWave Software Solutions</p>
     </div>
 

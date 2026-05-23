@@ -2,7 +2,7 @@
 
     <footer>
         <div class="footer-area">
-            <p>&copy; Copyright 2025. All right reserved. Bin Sultan.</p>
+            <p>&copy; Copyright 2025. All right reserved. Pakistan Chicken.</p>
         </div>
     </footer>
     </div>

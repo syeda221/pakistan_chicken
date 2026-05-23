@@ -156,7 +156,7 @@
     h2 {
       margin: 0 0 4px;
       font-size: 18px;
-      /* 🔥 Bin Sultan BIG */
+      /* 🔥 Pakistan Chicken BIG */
       font-weight: 900;
       /* 🔥 EXTRA BOLD */
       letter-spacing: 1px;
@@ -367,7 +367,7 @@
         </a>
       </div>
       <div class="center">
-        <h2 class="bold">Bin Sultan</h2>
+        <h2 class="bold">Pakistan Chicken</h2>
       </div>
       <div class="meta">
         <div class="label">Invoice ID:</div>

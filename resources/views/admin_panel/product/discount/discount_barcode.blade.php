@@ -85,7 +85,7 @@
 </head>
 <body>
     <div class="label">
-        <div class="brand-name">Bin Sultan</div>
+        <div class="brand-name">Pakistan Chicken</div>
 
         <div class="barcode-block">
             {!! DNS1D::getBarcodeSVG($discount->discount_code, 'C128', 1.4, 20, 'black', false) !!}

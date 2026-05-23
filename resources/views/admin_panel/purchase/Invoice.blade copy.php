@@ -14,10 +14,10 @@
                             <div class="d-flex justify-content-between align-items-start border-bottom pb-4 mb-4">
                                 <!-- Logo & Company Info -->
                                 <div>
-                                    <img src="{{ asset('assets/images/Bin Sultan_logo.png') }}" alt="Company Logo" height="70">
-                                    <h4 class="mt-3 mb-1 fw-bold">Bin Sultan Sweets & Bakers</h4>
+                                    <img src="{{ asset('assets/images/Pakistan Chicken_logo.png') }}" alt="Company Logo" height="70">
+                                    <h4 class="mt-3 mb-1 fw-bold">Pakistan Chicken </h4>
                                     <p class="text-muted mb-1">Chandni market, Salahuddin Road, Cantonment, Hyderabad</p>
-                                    <p class="text-muted mb-0">Phone: +92 327 9226901 | Email: info@Bin Sultanstore.com</p>
+                                    <p class="text-muted mb-0">Phone: +92 327 9226901 | Email: info@Pakistan Chickenstore.com</p>
                                 </div>
 
                                 <!-- Invoice Info -->

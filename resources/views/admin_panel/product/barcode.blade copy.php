@@ -91,7 +91,7 @@
 
   <!-- Laravel/Blade me jitne labels chahiye utni dafa yeh block repeat kar dein -->
   <div class="label">
-    <div class="brand-name">Bin Sultan</div>
+    <div class="brand-name">Pakistan Chicken</div>
 
     <div class="barcode-block">
       {!! DNS1D::getBarcodeSVG($product->barcode_path, 'C128', 1.2, 20, 'black', false) !!}

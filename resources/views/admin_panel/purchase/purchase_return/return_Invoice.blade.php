@@ -80,8 +80,8 @@
 
     {{-- HEADER --}}
     <div class="header">
-        <h1>Bin Sultan</h1>
-        <p>Sweets & Bakers</p>
+        <h1>Pakistan Chicken</h1>
+        <p></p>
         <p>Chandni Market, Salahuddin Road, Cantt Hyderabad</p>
         <p>Phone: +92 327 9226901</p>
     </div>
@@ -175,7 +175,7 @@
     </p>
 
     <div style="margin-top:40px; text-align:center; font-size:12px; border-top:1px solid #ccc; padding-top:10px;">
-        Thank you for your business — <strong>Bin Sultan Sweets & Bakers</strong>
+        Thank you for your business — <strong>Pakistan Chicken </strong>
     </div>
 
 </div>

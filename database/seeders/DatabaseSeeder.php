@@ -29,23 +29,46 @@ class DatabaseSeeder extends Seeder
             WarehouseSeeder::class
         ]);
 
-        
-        $branchUser = User::create([
-                    'name' => 'soban',
-                    'email' => 'soban@soban.com',
-                    'password' => Hash::make('soban')
-                ]);
-        $adminUser = User::create([
-                    'name' => 'admin',
-                    'email' => 'admin@admin.com',
-                    'password' => Hash::make('admin')
-                ]);
+        $branchUser = User::firstOrCreate(
+            ['email' => 'soban@soban.com'],
+            ['name' => 'soban', 'password' => Hash::make('soban')]
+        );
+        $adminUser = User::firstOrCreate(
+            ['email' => 'admin@admin.com'],
+            ['name' => 'admin', 'password' => Hash::make('admin')]
+        );
 
-         $permissions = [
-            'Create Product',
-            'Delete Product',
-            'View Product',
-            'Edit Product',
+        $permissions = [
+            'Products',
+            'Discount Products',
+            'Category',
+            'Sub Category',
+            'Brands',
+            'List Inwards',
+            'Create Inward Gatepass',
+            'Purchase',
+            'Purchase Return',
+            'Vendor',
+            'List Warehouse',
+            'Warehouse Stock',
+            'Stock Transfer',
+            'Sales',
+            'Sale Return',
+            'Bookings',
+            'Customer',
+            'Sales Officer',
+            'Zone',
+            'Char Of Accounts',
+            'Narrations',
+            'Receipts Voucher',
+            'Payment Voucher',
+            'Expense Voucher',
+            'Item Stock Report',
+            'Purchase Report',
+            'Sale Report',
+            'Customer Ledger',
+            'Vendor Ledger',
+            'System Reports'
         ];
 
         foreach ($permissions as $permission) {

@@ -57,7 +57,7 @@
     <div id="receipt">
 
         <div class="center bold">
-            Bin Sultan Sweets & Bakers 
+            Pakistan Chicken  
         </div>
 
         <div class="center">
@@ -117,7 +117,7 @@
         <div class="line"></div>
 
         <div class="center">
-            Paid by <strong>Bin Sultan Sweets & Bakers </strong>
+            Paid by <strong>Pakistan Chicken  </strong>
         </div>
 
         <div class="center">

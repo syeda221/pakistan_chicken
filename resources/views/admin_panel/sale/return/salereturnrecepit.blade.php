@@ -197,8 +197,8 @@
     <!-- Header -->
     <div class="center">
       <img src="{{ asset('assets/images/logo.jpeg') }}" alt="Logo" style="max-height: 80px; margin-bottom: 5px;">
-      <div class="store-name">Bin Sultan</div>
-      <div class="store-info">Sweets & Bakers</div>
+      <div class="store-name">Pakistan Chicken</div>
+      <div class="store-info"></div>
       <div class="store-info">A-16/B Block-D Unit No. 6 Latifabad, Hyderabad</div>
       <div class="store-info">Phone: 0334 2615888</div>
       

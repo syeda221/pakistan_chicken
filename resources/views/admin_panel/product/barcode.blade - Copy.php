@@ -92,7 +92,7 @@
 
 <body>
     <div class="label">
-        <div class="brand-name">Bin Sultan</div>
+        <div class="brand-name">Pakistan Chicken</div>
 
         <div class="barcode-block">
             {!! DNS1D::getBarcodeSVG($product->barcode_path, 'C128', 1.6, 23, 'black', false) !!}

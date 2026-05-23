@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bin Sultan Sweets & Bakers | Premium Artisan Bakery</title>
+    <title>Pakistan Chicken  | Premium Artisan Bakery</title>
 
     <!-- Google Fonts: Playfair Display for Serif, Outfit for Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -300,7 +300,7 @@
 <body class="antialiased">
 
     <nav>
-        <a href="/" class="logo">Bin Sultan<span>.</span></a>
+        <a href="/" class="logo">Pakistan Chicken<span>.</span></a>
         <div class="nav-links">
             @if (Route::has('login'))
                 <a href="{{ route('login') }}" style="color: var(--gold); font-weight: 700;">Login</a>
@@ -312,7 +312,7 @@
         <div class="hero-bg"></div>
         <div class="hero-content">
             <span class="brand-top">Since 1995</span>
-            <h1>Bin Sultan Sweets & Bakers</h1>
+            <h1>Pakistan Chicken </h1>
             <p class="hero-desc">
                 Experience the fine art of baking with our handcrafted sweets, gourmet pastries, and traditional delicacies made with the finest ingredients and timeless passion.
             </p>

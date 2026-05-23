@@ -4,7 +4,7 @@ $dumpContent = file_get_contents("c:/Users/Admin/Downloads/bin_sultan.sql");
 preg_match_all("/CREATE TABLE \`(.*?)\`(.*?)\;/is", $dumpContent, $matches);
 $dumpTables = array_combine($matches[1], $matches[2]);
 
-$migrationsPath = "c:/Users/Admin/Downloads/Bin_sultan_sweets/database/migrations";
+$migrationsPath = "c:/Users/Admin/Downloads/Pakistan_Chiken/database/migrations";
 $migrationFiles = scandir($migrationsPath);
 
 $issues = [];

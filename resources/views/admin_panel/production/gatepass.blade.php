@@ -68,8 +68,8 @@
 
 <div class="receipt">
     <div class="center">
-        <div class="brand">Bin Sultan</div>
-        <div class="address" style="font-size:15px; margin-bottom: 3px;">Sweets & Bakers</div>
+        <div class="brand">Pakistan Chicken</div>
+        <div class="address" style="font-size:15px; margin-bottom: 3px;"></div>
         <div class="address">Latifabad no 6 Near Shadman</div>
         <div class="address">Hall Hyderabad</div>
         <div class="address">Ph: 022 2786661</div>
