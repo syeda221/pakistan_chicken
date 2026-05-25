@@ -53,6 +53,45 @@
         border-top: 1px dashed #000;
         padding-top: 4px;
     }
+    @media print {
+        @page {
+            margin: 0;
+            size: 80mm auto;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: auto;
+        }
+        .receipt-container {
+            width: 74mm !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            padding: 2mm !important;
+            page-break-inside: avoid;
+            page-break-after: avoid;
+        }
+        table, tr, td, th, tbody, thead, tfoot {
+            page-break-inside: avoid !important;
+        }
+        table {
+            table-layout: fixed;
+            width: 100%;
+            word-wrap: break-word;
+        }
+        th, td {
+            white-space: normal !important;
+            padding: 1px !important;
+            font-size: 10px !important;
+        }
+        body {
+            font-size: 10px !important;
+        }
+    }
+    .page-break {
+        page-break-after: always;
+    }
 </style>
 </head>
 <body>
@@ -61,8 +100,8 @@
 
     <!-- Header -->
     <div class="center">
-        <h2 style="margin:0;font-size:14px;" class="bold">Pakistan Chicken</h2>
-        <p style="margin:0;"></p>
+        <h2 style="margin:0;font-size:14px;" class="bold">Bin Sultan</h2>
+        <p style="margin:0;">Sweets & Bakers</p>
         <p style="margin:0;">A-16/B Block-D Unit No. 6 Latifabad, Hyderabad</p>
         <p style="margin:0;">Phone: 0334 2615888</p>
     </div>
@@ -73,6 +112,7 @@
 
     <!-- Details -->
     <table>
+        <tr><th>Operator Name:</th><td>{{ auth()->user()->name ?? 'Admin' }}</td></tr>
         <tr><th>Customer:</th><td>Counter Sale</td></tr>
         <tr><th>Reference:</th><td>#{{ $sale->id }}</td></tr>
         <tr><th>Order Type:</th><td>{{ $sale->order_type ?? 'Walk-in' }}</td></tr>

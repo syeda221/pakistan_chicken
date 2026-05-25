@@ -52,10 +52,12 @@
 
     /* Receipt Container */
     .receipt-container {
-      width: 80mm;
+      width: 100%;
+      max-width: 80mm; /* Limit on screen, but adapt to smaller screens/printers */
       margin: 0 auto;
-      padding: 5mm 2mm;
+      padding: 2mm;
       background: #fff;
+      overflow: hidden; /* Prevent horizontal overflow */
     }
 
     .center {
@@ -197,17 +199,51 @@
 
       @page {
         margin: 0;
+        size: 80mm auto;
       }
 
-      body {
+      html, body {
         margin: 0;
+        padding: 0;
+        width: 100%;
+        height: auto;
         -webkit-print-color-adjust: exact;
       }
 
       .receipt-container {
-        width: 100%;
-        padding: 2mm;
+        width: 74mm !important; /* Printable area for 80mm paper is ~72-76mm */
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 2mm !important;
+        page-break-inside: avoid;
+        page-break-after: avoid;
       }
+      
+      table, tr, td, th, tbody, thead, tfoot {
+        page-break-inside: avoid !important;
+      }
+
+      table {
+        table-layout: fixed;
+        width: 100%;
+        word-wrap: break-word;
+      }
+
+      th, td {
+        white-space: normal !important;
+        padding: 1px !important;
+      }
+      
+      body {
+        font-size: 10px;
+      }
+      .store-name { font-size: 14px; }
+      .store-info { font-size: 10px; }
+      .receipt-title { font-size: 12px; }
+      .items-table thead th { font-size: 10px; }
+      .item-row td { font-size: 10px; }
+      .totals-table .grand-total-row th,
+      .totals-table .grand-total-row td { font-size: 12px; }
     }
 
     .page-break {
@@ -237,7 +273,7 @@
       <div class="receipt-container @if(!$loop->last || $mode == 'token_and_invoice') page-break @endif">
           <div class="center">
               <img src="{{ asset('assets/images/logo.jpeg') }}" alt="Logo" style="max-height: 60px; margin-bottom: 5px;">
-              <div class="store-name">Pakistan Chicken</div>
+              <div class="store-name">Bin Sultan</div>
               <div style="font-weight:bold; border:1px dashed #000; padding:4px; margin:5px 0;">TOKEN ({{ strtoupper($categoryName) }})</div>
               <p style="margin:5px 0; font-size:14px; font-weight:bold;">Order: {{ $sale->order_type ?? 'Walk-in' }} @if($sale->table_id) | Table: {{ \App\Models\Table::find($sale->table_id)->table_name ?? '' }} @endif</p>
           </div>
@@ -283,8 +319,8 @@
     <!-- Header -->
     <div class="center">
       <img src="{{ asset('assets/images/logo.jpeg') }}" alt="Logo" style="max-height: 80px; margin-bottom: 5px;">
-      <div class="store-name">Pakistan Chicken</div>
-      <div class="store-info"></div>
+      <div class="store-name">Bin Sultan</div>
+      <div class="store-info">Sweets & Bakers</div>
       <div class="store-info">A-16/B Block-D Unit No. 6 Latifabad, Hyderabad</div>
       <div class="store-info">Phone: 0334 2615888</div>
       
@@ -299,7 +335,7 @@
       </tr>
       <tr>
         <th>Operator Name</th>
-        <td>: {{ $sale->user->name ?? 'Admin' }}</td>
+        <td>: {{ auth()->user()->name ?? 'Admin' }}</td>
       </tr>
       <tr>
         <th>Order Type</th>
