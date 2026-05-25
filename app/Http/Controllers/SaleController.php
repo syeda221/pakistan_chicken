@@ -650,7 +650,7 @@ class SaleController extends Controller
                 $combined_variant_ids[] = $vId;
 
                 // Use pre-fetched stock 
-                // In Bin Sultan POS, we deduct stock for BOTH final sale and save_token
+                // In Pakistan Chicken POS, we deduct stock for BOTH final sale and save_token
                 // Default branch/warehouse to 1 for POS for now
                 $stockQuery = Stock::where('product_id', $product_id)
                                    ->where('branch_id', 1)
@@ -723,7 +723,7 @@ class SaleController extends Controller
 
             // --- Fill common fields ---
             $model->customer             = $request->customer;
-            $model->reference            = $request->reference;
+            $model->reference            = $request->reference ?? '';
             $model->product              = implode(',', $combined_product_ids);
             $model->product_code         = implode(',', $combined_codes);
             $model->brand                = implode(',', $combined_brands);
@@ -1016,7 +1016,7 @@ class SaleController extends Controller
 
             // Update Sale record
             $sale->customer        = $request->customer;
-            $sale->reference       = $request->reference;
+            $sale->reference       = $request->reference ?? '';
             $sale->product         = implode(',', $combined_products);
             $sale->variant_id      = implode(',', $combined_variant_ids);
             $sale->product_code    = implode(',', $combined_codes);
@@ -1635,7 +1635,7 @@ class SaleController extends Controller
             $saleReturn = new \App\Models\SalesReturn();
             $saleReturn->sale_id = $saleId;
             $saleReturn->customer = $request->customer;
-            $saleReturn->reference = $request->reference;
+            $saleReturn->reference = $request->reference ?? '';
             $saleReturn->product = implode(',', $combined_products);
             $saleReturn->product_code = implode(',', $combined_codes);
             $saleReturn->brand = implode(',', $combined_brands);
@@ -2154,7 +2154,7 @@ class SaleController extends Controller
             $old_total = $sale->total_net;
 
             $sale->customer            = $request->customer;
-            $sale->reference           = $request->reference;
+            $sale->reference           = $request->reference ?? '';
             $sale->product             = implode(',', $combined_products);
             $sale->variant_id          = implode(',', $combined_variant_ids);
             $sale->product_code        = implode(',', $combined_codes);

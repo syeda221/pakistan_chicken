@@ -184,7 +184,7 @@ class ProductController extends Controller
         }
 
         // Image upload
-        $imagePath = null;
+        $imagePath = 'default.png';
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -345,7 +345,7 @@ class ProductController extends Controller
         ]);
 
         // Image upload
-        $imagePath = $product->image;
+        $imagePath = $product->image ?: 'default.png';
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
