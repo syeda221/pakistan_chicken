@@ -209,10 +209,11 @@ class HomeController extends Controller
                 'products.id',
                 'products.item_code',
                 'products.item_name',
-                DB::raw('COALESCE(stocks.qty, 0) as qty'),
+                DB::raw('COALESCE(SUM(stocks.qty), 0) as qty'),
                 'products.alert_quantity'
             )
-            ->whereRaw('COALESCE(stocks.qty, 0) <= products.alert_quantity')
+            ->groupBy('products.id', 'products.item_code', 'products.item_name', 'products.alert_quantity')
+            ->havingRaw('COALESCE(SUM(stocks.qty), 0) <= products.alert_quantity')
             ->get();
         $lowStockChart = [
             'categories' => $lowStockData->pluck('item_name'),

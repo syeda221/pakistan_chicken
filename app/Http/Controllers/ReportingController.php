@@ -84,7 +84,7 @@ class ReportingController extends Controller
         $mapProd = []; foreach($productions as $pd) { $mapProd[$pd->product_id . '_' . ($pd->variant_id ?? 0)] = ($mapProd[$pd->product_id . '_' . ($pd->variant_id ?? 0)] ?? 0) + $pd->total_qty; }
         // purchase_return_items has no variant_id — map by product only (key pid_0)
         $mapPR = []; foreach($purchaseReturns as $pr) { $mapPR[$pr->product_id . '_0'] = ($mapPR[$pr->product_id . '_0'] ?? 0) + $pr->total_qty; }
-        $mapS = []; foreach($currStocks as $cs) { $mapS[$cs->product_id . '_' . ($cs->variant_id ?? 0)] = $cs->qty; }
+        $mapS = []; foreach($currStocks as $cs) { $mapS[$cs->product_id . '_' . ($cs->variant_id ?? 0)] = ($mapS[$cs->product_id . '_' . ($cs->variant_id ?? 0)] ?? 0) + $cs->qty; }
 
         // Sales processing (by product and variant) with DATE filter
         $hasVariantIdInSales = \Illuminate\Support\Facades\Schema::hasColumn('sales', 'variant_id');
@@ -451,7 +451,9 @@ class ReportingController extends Controller
         $variantIds = $variants->pluck('variant_id')->toArray();
         $stocks = DB::table('stocks')
             ->whereIn('variant_id', $variantIds)
-            ->pluck('qty', 'variant_id');
+            ->select('variant_id', DB::raw('SUM(qty) as total_qty'))
+            ->groupBy('variant_id')
+            ->pluck('total_qty', 'variant_id');
 
         // Group by product
         $grouped = [];

@@ -242,7 +242,8 @@ class InwardgatepassController extends Controller
                 // ===== SHOP STOCK REVERSE =====
                 if ($gatepass->receive_type === 'shop') {
 
-                    $stock = Stock::where('branch_id', $gatepass->branch_id)
+                    $stock = Stock::where('branch_id', 1)
+                        ->where('warehouse_id', 1)
                         ->where('product_id', $item->product_id)
                         ->first();
 
@@ -435,11 +436,11 @@ class InwardgatepassController extends Controller
 
             $stock = \App\Models\Stock::firstOrCreate(
                 [
-                    'branch_id'  => $gatepass->branch_id,
+                    'branch_id'  => 1,
+                    'warehouse_id' => 1,
                     'product_id' => $productId,
                 ],
                 [
-                    'warehouse_id' => $gatepass->warehouse_id,
                     'qty'          => 0,
                     'reserved_qty' => 0,
                 ]

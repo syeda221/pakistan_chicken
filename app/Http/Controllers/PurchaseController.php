@@ -142,7 +142,7 @@ class PurchaseController extends Controller
             $invoiceNo = Purchase::generateInvoiceNo();
 
             $purchase = Purchase::create([
-                'branch_id'     => auth()->id(),
+                'branch_id'     => 1,
                 'vendor_id'     => $validated['vendor_id'] ?? null,
                 'purchase_date' => $validated['purchase_date'] ?? now(),
                 'invoice_no'    => $invoiceNo,
@@ -219,7 +219,8 @@ class PurchaseController extends Controller
                 if ($validated['purchase_to'] === 'shop') {
 
                     // ➕ SHOP STOCK
-                    $stock = Stock::where('branch_id', auth()->id())
+                    $stock = Stock::where('branch_id', 1)
+                        ->where('warehouse_id', 1)
                         ->where('product_id', $productId)
                         ->where('variant_id', $variantId)
                         ->first();
@@ -229,7 +230,8 @@ class PurchaseController extends Controller
                         $stock->save();
                     } else {
                         Stock::create([
-                            'branch_id'  => auth()->id(),
+                            'branch_id'  => 1,
+                            'warehouse_id' => 1,
                             'product_id' => $productId,
                             'variant_id' => $variantId,
                             'qty'        => $qtyStock,
@@ -866,21 +868,26 @@ class PurchaseController extends Controller
                 // stock minus
                 if ($request->purchase_to === 'warehouse') {
 
-                    $stock = Stock::where('warehouse_id', $validated['warehouse_id'] ?? null)
+                    $warehouseStock = WarehouseStock::where('warehouse_id', $validated['warehouse_id'] ?? null)
                         ->where('product_id', $productId)
                         ->first();
+                    
+                    if ($warehouseStock) {
+                        $warehouseStock->quantity -= $qty;
+                        $warehouseStock->save();
+                    }
                 } else {
 
                     // SHOP stock
-                    $stock = Stock::whereNull('warehouse_id')
+                    $stock = Stock::where('branch_id', 1)
+                        ->where('warehouse_id', 1)
                         ->where('product_id', $productId)
                         ->first();
-                }
-
-
-                if ($stock) {
-                    $stock->qty -= $qty;
-                    $stock->save();
+                    
+                    if ($stock) {
+                        $stock->qty -= $qty;
+                        $stock->save();
+                    }
                 }
             }
 
