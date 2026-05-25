@@ -120,8 +120,8 @@
    
     <!-- Footer -->
     <div class="footer">
-        <p>Please check bakery items at the time of purchase</p>
-        <p>Bakery & sweets items are non-returnable</p>
+        <p>Please check items at the time of purchase</p>
+        <p>Items are non-returnable</p>
         <p>*** Thank you for the visit
  ***</p>
     </div>

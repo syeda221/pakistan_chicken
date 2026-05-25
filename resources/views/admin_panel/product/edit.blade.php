@@ -226,7 +226,7 @@
                 <div class="bodywrapper__inner">
                     <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
                         <h6 class="page-title mb-0">
-                            <i class="la la-edit" style="color: #667eea;"></i> Edit Bakery Product
+                            <i class="la la-edit" style="color: #667eea;"></i> Edit Product
                         </h6>
 
                         <!-- Center: Buttons -->
@@ -392,7 +392,7 @@
                                                                 <input type="radio" name="unit_type" value="pound" id="unit_pound" {{ $product->unit_type == 'pound' ? 'checked' : '' }}>
                                                                 <label for="unit_pound">
                                                                     <i class="la la-birthday-cake"></i>
-                                                                    Pound (Bakery)
+                                                                    Pound
                                                                     <small class="d-block text-muted">Cake sizes</small>
                                                                 </label>
                                                             </div>

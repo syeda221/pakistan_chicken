@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pakistan Chicken  | Premium Artisan Bakery</title>
+    <title>Pakistan Chicken | Fresh Chicken Shop</title>
 
     <!-- Google Fonts: Playfair Display for Serif, Outfit for Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

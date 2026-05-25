@@ -203,7 +203,7 @@
         <div class="login-card">
             <div class="brand-header">
                 <h2>Pakistan Chicken<span>.</span></h2>
-                <p>Bakery Management System</p>
+                <p>Chicken Management System</p>
             </div>
 
             <form method="POST" action="{{ route('login') }}">

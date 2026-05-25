@@ -489,8 +489,8 @@
 
     <!-- Footer -->
     <div class="footer center" style="font-weight: normal;">
-      <p style="margin: 5px 0;">Please check bakery items at the time of purchase</p>
-      <p style="margin: 5px 0;">Bakery & Sweets items are non-returnable</p>
+      <p style="margin: 5px 0;">Please check items at the time of purchase</p>
+      <p style="margin: 5px 0;">Items are non-returnable</p>
       <p style="margin: 2px 0; font-size: 11px; font-weight: normal;">Develop By: ProWave Software Solutions</p>
       <p style="margin: 2px 0; font-size: 11px; font-weight: normal;">+92 317 3836 223 | +92 317 3859 647</p>
       <p style="margin: 10px 0;">*** Thank you for the visit ***</p>
