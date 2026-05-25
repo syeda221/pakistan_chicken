@@ -98,6 +98,18 @@ class StockTransferController extends Controller
                     continue;
                 }
 
+                $product = Product::with('unit')->find($productId);
+                $unitName = strtolower($product->unit->name ?? '');
+                $prodName = strtolower($product->item_name);
+                $isGram = str_contains($unitName, 'gram') || str_contains($unitName, 'gm') || 
+                          str_contains($prodName, 'gram') || str_contains($prodName, ' gm') || 
+                          ($product && $product->unit_type === 'kg');
+                
+                $qtyStock = $isGram ? ($qty * 1000) : $qty;
+                if ($isGram) {
+                    $variantId = null; // KG items use null variant
+                }
+
                 // ---------- SOURCE ----------
                 if ($fromWarehouse !== 'Shop') {
                     $sourceStock = WarehouseStock::firstOrCreate(
@@ -109,7 +121,7 @@ class StockTransferController extends Controller
                         ['quantity' => 0, 'price' => 0]
                     );
 
-                    $sourceStock->quantity -= $qty;
+                    $sourceStock->quantity -= $qtyStock;
                     $sourceStock->save();
                 } else {
                     $sourceStock = Stock::firstOrCreate(
@@ -120,7 +132,7 @@ class StockTransferController extends Controller
                         ['qty' => 0]
                     );
 
-                    $sourceStock->qty -= $qty;
+                    $sourceStock->qty -= $qtyStock;
                     $sourceStock->save();
                 }
 
@@ -135,7 +147,7 @@ class StockTransferController extends Controller
                         ['quantity' => 0, 'price' => $sourceStock->price ?? 0]
                     );
 
-                    $destStock->quantity += $qty;
+                    $destStock->quantity += $qtyStock;
                     $destStock->save();
                 } elseif ($transferTo === 'shop') {
                     $shopStock = Stock::firstOrCreate(
@@ -146,7 +158,7 @@ class StockTransferController extends Controller
                         ['qty' => 0]
                     );
 
-                    $shopStock->qty += $qty;
+                    $shopStock->qty += $qtyStock;
                     $shopStock->save();
                 }
             }
@@ -210,8 +222,20 @@ class StockTransferController extends Controller
                     ->first();
             }
 
+            $product = Product::with('unit')->find($productId);
+            $unitName = strtolower($product->unit->name ?? '');
+            $prodName = strtolower($product->item_name ?? '');
+            $isGram = str_contains($unitName, 'gram') || str_contains($unitName, 'gm') || 
+                      str_contains($prodName, 'gram') || str_contains($prodName, ' gm') || 
+                      ($product && $product->unit_type === 'kg');
+                      
+            $stockQty = $stock ? $stock->quantity : 0;
+            if ($isGram) {
+                $stockQty = $stockQty / 1000;
+            }
+
             return response()->json([
-                'quantity' => $stock ? $stock->quantity : 0,
+                'quantity' => $stockQty,
                 'source'   => 'warehouse'
             ]);
         }
@@ -232,8 +256,20 @@ class StockTransferController extends Controller
                 ->first();
         }
 
+        $product = Product::with('unit')->find($productId);
+        $unitName = strtolower($product->unit->name ?? '');
+        $prodName = strtolower($product->item_name ?? '');
+        $isGram = str_contains($unitName, 'gram') || str_contains($unitName, 'gm') || 
+                  str_contains($prodName, 'gram') || str_contains($prodName, ' gm') || 
+                  ($product && $product->unit_type === 'kg');
+
+        $stockQty = $stock ? $stock->qty : 0;
+        if ($isGram) {
+            $stockQty = $stockQty / 1000;
+        }
+
         return response()->json([
-            'quantity' => $stock ? $stock->qty : 0,
+            'quantity' => $stockQty,
             'source'   => 'shop'
         ]);
     }
