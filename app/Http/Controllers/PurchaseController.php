@@ -857,7 +857,7 @@ class PurchaseController extends Controller
                     'price'              => $price,
                     'item_discount'      => $discPerPc,
                     'unit'               => $unit,
-                    'note'               => $request->item_note[$i] ?? null, // ✅ NOTE
+                    // 'note'               => $request->item_note[$i] ?? null, // Removed because column doesn't exist
                     'line_total'         => $lineTotal,
                 ]);
 
