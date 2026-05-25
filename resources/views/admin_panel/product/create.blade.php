@@ -385,14 +385,14 @@
                                                                     <small class="d-block text-muted">Count based</small>
                                                                 </label>
                                                             </div>
-                                                            <div class="unit-type-option">
+                                                            <!-- <div class="unit-type-option">
                                                                 <input type="radio" name="unit_type" value="pound" id="unit_pound">
                                                                 <label for="unit_pound">
                                                                     <i class="la la-birthday-cake"></i>
                                                                     Pound
                                                                     <small class="d-block text-muted">Cake sizes</small>
                                                                 </label>
-                                                            </div>
+                                                            </div> -->
                                                         </div>
                                                     </div>
 

@@ -148,17 +148,17 @@
 {{-- ======= LEFT ======= --}}
 <div class="pos-left">
     <div class="pos-topbar">
-        <div class="pos-brand">🎂 Pakistan Chicken Sweets</div>
+        <div class="pos-brand"> Pakistan Chicken </div>
         <div class="srchwrap">
             <i class="la la-search"></i>
             <input type="text" id="posSearch" placeholder="Search products…" autocomplete="off">
         </div>
-        <button type="button" class="btn-cls" style="background:#f39c12; color:#fff; border:none; margin-right: 10px;" onclick="showModal('tableModal')"><i class="la la-server"></i> Running Orders</button>
+        <!-- <button type="button" class="btn-cls" style="background:#f39c12; color:#fff; border:none; margin-right: 10px;" onclick="showModal('tableModal')"><i class="la la-server"></i> Running Orders</button> -->
         <a href="{{ route('sale.index') }}" class="btn-cls"><i class="la la-times"></i> Close</a>
     </div>
 
     <div class="cat-tabs">
-        <div class="cat-tab active" data-cat="">🍰 All</div>
+        <div class="cat-tab active" data-cat=""> All</div>
         @foreach($categories as $cat)
         <div class="cat-tab" data-cat="{{ $cat->id }}">{{ $cat->name }}</div>
         @endforeach
@@ -178,11 +178,11 @@
         </div>
         
         <div class="ord-cust" style="margin-bottom:8px;">
-            <select name="order_type" id="orderTypeSel" style="flex:1" onchange="handleOrderTypeChange()">
+            <!-- <select name="order_type" id="orderTypeSel" style="flex:1" onchange="handleOrderTypeChange()">
                 <option value="Walk-in">🚶 Walk-in</option>
                 <option value="Takeaway">🥡 Takeaway</option>
                 <option value="Dine-in">🍽️ Dine-in</option>
-            </select>
+            </select> -->
         </div>
 
         <div class="ord-cust">
