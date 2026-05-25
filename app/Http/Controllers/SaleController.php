@@ -650,7 +650,7 @@ class SaleController extends Controller
                 $combined_variant_ids[] = $vId;
 
                 // Use pre-fetched stock 
-                // In Pakistan Chicken POS, we deduct stock for BOTH final sale and save_token
+                // In Bin Sultan POS, we deduct stock for BOTH final sale and save_token
                 // Default branch/warehouse to 1 for POS for now
                 $stockQuery = Stock::where('product_id', $product_id)
                                    ->where('branch_id', 1)
@@ -820,6 +820,9 @@ class SaleController extends Controller
             if ($model instanceof \App\Models\Sale) {
                 $returnTo = route('sale.add');
                 $printMode = ($action === 'save_token') ? 'token_only' : 'invoice';
+                if ($action === 'sale' && strtolower($model->order_type ?? '') === 'takeaway') {
+                    $printMode = 'token_and_invoice';
+                }
                 $invoiceUrl = route('sales.invoice', $model->id) . '?return_to=' . urlencode($returnTo) . '&autoprint=1&mode=' . $printMode;
                 return redirect()->to($invoiceUrl)->with('success', $action === 'save_token' ? 'Order Saved.' : 'Sale completed.');
             } else {
@@ -1299,7 +1302,7 @@ class SaleController extends Controller
             $items[] = [
                 'product_id'    => $product->id ?? ($productIdCandidate ?? ''),
                 'variant_id'    => $vIds[$index] ?? null,
-                'item_name'     => $product->item_name ?? (string)($p),
+                'item_name'     => !empty($note_value) ? $note_value : ($product->item_name ?? (string)($p)),
                 'item_code'     => $product->item_code ?? ($itemCodeCandidate ?? ''),
                 'brand'         => $product->brand->name ?? ($brands[$index] ?? ''),
                 'unit'          => $product->unit ?? ($units[$index] ?? ''),
@@ -1568,7 +1571,21 @@ class SaleController extends Controller
 
                     if ($isKg) {
                         $stockQuery->whereNull('variant_id');
-                        $returnQtyInDb = $qty * 1000;
+                        if (!empty($vId)) {
+                            $vModel = \App\Models\ProductVariant::find($vId);
+                            if ($vModel) {
+                                $kgSize = floatval($vModel->size_value);
+                                if (strtolower($vModel->size_unit) === 'kg') {
+                                    $returnQtyInDb = ($kgSize * $qty * 1000);
+                                } else {
+                                    $returnQtyInDb = ($kgSize * $qty);
+                                }
+                            } else {
+                                $returnQtyInDb = $qty * 1000;
+                            }
+                        } else {
+                            $returnQtyInDb = $qty * 1000;
+                        }
                     } else {
                         if (!empty($vId)) {
                             $stockQuery->where('variant_id', $vId);
@@ -2343,31 +2360,79 @@ class SaleController extends Controller
         $totals     = explode(',', $return->per_total);
         $colors_json = json_decode($return->color, true);
 
+        // Map variant_id from parent sale
+        $parentSale = $return->sale;
+        $sale_codes = $parentSale ? explode(',', $parentSale->product_code) : [];
+        $sale_vids  = $parentSale ? explode(',', $parentSale->variant_id ?? '') : [];
+        $codeToVid  = [];
+        foreach ($sale_codes as $i => $c) {
+            $codeToVid[trim($c)] = trim($sale_vids[$i] ?? '');
+        }
+
         $items = [];
 
         foreach ($products as $index => $p) {
 
-            $qty = intval($qtys[$index] ?? 0);
+            $qty = floatval($qtys[$index] ?? 0);
 
             // ❌ qty 0 ya empty ho to skip
             if ($qty <= 0) {
                 continue;
             }
 
+            $code = trim($codes[$index] ?? '');
             $product = \App\Models\Product::with('category_relation', 'brand')->where('item_name', trim($p))
-                ->orWhere('item_code', trim($codes[$index] ?? ''))
+                ->orWhere('item_code', $code)
                 ->first();
+
+            $vId = $codeToVid[$code] ?? '';
+            $vModel = $vId ? \App\Models\ProductVariant::find($vId) : null;
+            $variantName = $vModel ? ($vModel->size_label ?: $vModel->variant_name) : '';
+
+            $displayName = $product->item_name ?? $p;
+            if ($variantName && $product) {
+                $cleanVariant = preg_replace('/\s*\([\d.]+\s*KG\)/i', '', $variantName);
+                $cleanVariant = trim(str_ireplace($product->item_name, '', $cleanVariant));
+                $cleanVariant = ltrim($cleanVariant, ' -');
+                if ($cleanVariant !== '') {
+                    $displayName .= ' (' . $cleanVariant . ')';
+                }
+            } else if ($variantName) {
+                $displayName .= ' - ' . $variantName;
+            }
+
+            $price = floatval($prices[$index] ?? 0);
+            $unit = ($product && $product->unit_type) ? $product->unit_type : ($units[$index] ?? '');
+
+            if ($vModel && $product && strtolower($product->unit_type ?? '') === 'kg' && $vModel->size_value > 0) {
+                $multiplier = 1;
+                $sUnit = strtolower($vModel->size_unit ?? 'kg');
+                if ($sUnit === 'kg') $multiplier = (float)$vModel->size_value;
+                elseif (in_array($sUnit, ['gm','gram','grams'])) $multiplier = (float)$vModel->size_value / 1000;
+                
+                $qty = $qty * $multiplier;
+                if ($multiplier > 0) $price = $price / $multiplier;
+                $unit = 'KG';
+            } else if (empty($unit) || is_numeric($unit)) {
+                if ($vModel && !empty($vModel->size_unit)) {
+                    $unit = strtoupper($vModel->size_unit);
+                } else if ($product && !empty($product->unit_type)) {
+                    $unit = strtoupper($product->unit_type);
+                } else {
+                    $unit = 'PIECE';
+                }
+            }
 
             $items[] = [
                 'product_id' => $product->id ?? '',
-                'item_name'  => $product->item_name ?? $p,
+                'item_name'  => $displayName,
                 'category'   => ($product && $product->category_relation) ? $product->category_relation->name : 'Uncategorized',
-                'item_code'  => $product->item_code ?? ($codes[$index] ?? ''),
+                'item_code'  => $code,
                 'brand'      => ($product && $product->brand) ? $product->brand->name : ($brands[$index] ?? ''),
-                'unit'       => ($product && $product->unit_type) ? $product->unit_type : ($units[$index] ?? ''),
-                'price'      => floatval($prices[$index] ?? 0),
+                'unit'       => $unit,
+                'price'      => $price,
                 'discount'   => floatval($discounts[$index] ?? 0),
-                'qty'        => (float)$qty,
+                'qty'        => $qty,
                 'total'      => floatval($totals[$index] ?? 0),
                 'color'      => isset($colors_json[$index])
                     ? json_decode($colors_json[$index], true)

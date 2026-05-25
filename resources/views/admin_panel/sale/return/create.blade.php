@@ -292,7 +292,10 @@
         <input type="number" step="any" name="item_disc[]" class="form-control form-control-sm disc-input" value="${itemDisc}">
     </td>
     <td>
-        <input type="number" step="any" name="qty[]" class="form-control form-control-sm qty-input" value="${returnQtyDefault}" max="${availableQty}">
+        <div class="input-group input-group-sm">
+            <input type="number" step="any" name="qty[]" class="form-control qty-input" value="${returnQtyDefault}" max="${availableQty}">
+            <span class="input-group-text">${escapeHtml(unit)}</span>
+        </div>
         <div class="small-muted">Max: <span class="max-qty">${availableQty}</span></div>
     </td>
     <td>
