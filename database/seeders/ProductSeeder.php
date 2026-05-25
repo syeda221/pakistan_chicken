@@ -18,13 +18,13 @@ class ProductSeeder extends Seeder
     {
         
           // Sample category
-        $category = Category::firstOrCreate(['name' => 'Men']);
+        $category = Category::firstOrCreate(['name' => 'Raw Chicken']);
         $subCategory = Subcategory::firstOrCreate([
             'category_id' => $category->id,
-            'name' => 'Shirts'
+            'name' => 'Whole Chicken'
         ]);
 
-        $unit = Unit::firstOrCreate(['name' => 'Piece']);
+        $unit = Unit::firstOrCreate(['name' => 'KG']);
 
         // 🔁 Auto-generate item code based on latest ID
         $lastId = Product::max('id') ?? 0;
@@ -38,9 +38,11 @@ class ProductSeeder extends Seeder
             'sub_category_id' => $subCategory->id,
             'item_code' => $itemCode,
             'unit_id' => $unit->id,
-            'item_name' => 'Formal Shirt',
-            'price' => 5000,
+            'unit_type' => 'kg',
+            'item_name' => 'Whole Chicken (Without Skin)',
+            'price' => 650,
             'alert_quantity' => 10,
+            'image' => 'default.png',
             // 'quantity' => 50
         ]);
     }

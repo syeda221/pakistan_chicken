@@ -15,11 +15,10 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $data = [
-            'Men' => ['Shirts', 'T-Shirts', 'Trousers', 'Jeans', 'Kurta', 'Sherwani'],
-            'Women' => ['Tops', 'Kurtis', 'Sarees', 'Dresses', 'Abayas', 'Lawn'],
-            'Kids' => ['Boys', 'Girls', 'Infant Wear'],
-            'Accessories' => ['Belts', 'Caps', 'Socks', 'Scarves', 'Bags'],
-            'Footwear' => ['Men Shoes', 'Women Shoes', 'Kids Shoes'],
+            'Raw Chicken' => ['Whole Chicken', 'Chicken Parts', 'Boneless', 'Keema (Mince)'],
+            'Marinated Chicken' => ['Tikka', 'Malai Boti', 'Seekh Kebab', 'Chapli Kebab'],
+            'Fried Chicken' => ['Broast', 'Nuggets', 'Wings'],
+            'Eggs' => ['Farm Eggs', 'Desi Eggs'],
         ];
 
         foreach ($data as $categoryName => $subcategories) {
