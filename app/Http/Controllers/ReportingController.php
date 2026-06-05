@@ -48,6 +48,11 @@ class ReportingController extends Controller
         $products = $pQuery->get();
         $productIds = $products->pluck('id')->toArray();
 
+        $isKgMap = [];
+        foreach ($products as $p) {
+            $isKgMap[$p->id] = ($p->unit_type === 'kg');
+        }
+
         // 2. Bulk queries grouped by product_id AND variant_id with DATE filters
         $purchases = DB::table('purchase_items')
             ->join('purchases', 'purchases.id', '=', 'purchase_items.purchase_id')
@@ -96,7 +101,7 @@ class ReportingController extends Controller
 
         // Sales processing (by product and variant) with DATE filter
         $hasVariantIdInSales = \Illuminate\Support\Facades\Schema::hasColumn('sales', 'variant_id');
-        $allSalesQuery = DB::table('sales')->whereBetween('created_at', [$startDT, $endDT])->whereNotNull('product')->select('product', 'qty');
+        $allSalesQuery = DB::table('sales')->whereBetween('created_at', [$startDT, $endDT])->whereNotNull('product')->select('product', 'qty', 'color');
         if ($hasVariantIdInSales) {
             $allSalesQuery->addSelect('variant_id');
         }
@@ -107,19 +112,34 @@ class ReportingController extends Controller
             $pids = explode(',', $s->product);
             $qtys = explode(',', $s->qty);
             $vids = $hasVariantIdInSales ? explode(',', $s->variant_id ?? '') : [];
+            $colors = json_decode($s->color ?? '[]', true);
+            if (!is_array($colors)) $colors = [];
             
             foreach ($pids as $idx => $pid) {
                 $pid = trim($pid);
                 if ($pid === '') continue;
                 $vid = trim($vids[$idx] ?? '0');
                 if ($vid === '') $vid = '0';
-                $key = $pid . '_' . $vid;
-                $soldMap[$key] = ($soldMap[$key] ?? 0) + floatval($qtys[$idx] ?? 0);
+                $qtyRaw = floatval($qtys[$idx] ?? 0);
+                
+                $isGram = $isKgMap[$pid] ?? false;
+                $label = $colors[$idx] ?? '';
+                if (is_array($label)) $label = $label[0] ?? '';
+                
+                if ($isGram && preg_match('/^(\d+(?:\.\d+)?)\s*g/i', trim($label), $matches)) {
+                    $grams = floatval($matches[1]) * $qtyRaw;
+                    $kg = $grams / 1000;
+                    $key = $pid . '_0'; // Force to base product for kg custom weight
+                    $soldMap[$key] = ($soldMap[$key] ?? 0) + $kg;
+                } else {
+                    $key = $pid . '_' . $vid;
+                    $soldMap[$key] = ($soldMap[$key] ?? 0) + $qtyRaw;
+                }
             }
         }
 
         $hasVariantIdInReturns = \Illuminate\Support\Facades\Schema::hasColumn('sales_returns', 'variant_id');
-        $allReturnsQuery = DB::table('sales_returns')->whereBetween('created_at', [$startDT, $endDT])->whereNotNull('product')->select('product', 'qty');
+        $allReturnsQuery = DB::table('sales_returns')->whereBetween('created_at', [$startDT, $endDT])->whereNotNull('product')->select('product', 'qty', 'color');
         if ($hasVariantIdInReturns) {
             $allReturnsQuery->addSelect('variant_id');
         }
@@ -130,14 +150,29 @@ class ReportingController extends Controller
             $pids = explode(',', $r->product);
             $qtys = explode(',', $r->qty);
             $vids = $hasVariantIdInReturns ? explode(',', $r->variant_id ?? '') : [];
+            $colors = json_decode($r->color ?? '[]', true);
+            if (!is_array($colors)) $colors = [];
             
             foreach ($pids as $idx => $pid) {
                 $pid = trim($pid);
                 if ($pid === '') continue;
                 $vid = trim($vids[$idx] ?? '0');
                 if ($vid === '') $vid = '0';
-                $key = $pid . '_' . $vid;
-                $retMap[$key] = ($retMap[$key] ?? 0) + floatval($qtys[$idx] ?? 0);
+                $qtyRaw = floatval($qtys[$idx] ?? 0);
+                
+                $isGram = $isKgMap[$pid] ?? false;
+                $label = $colors[$idx] ?? '';
+                if (is_array($label)) $label = $label[0] ?? '';
+                
+                if ($isGram && preg_match('/^(\d+(?:\.\d+)?)\s*g/i', trim($label), $matches)) {
+                    $grams = floatval($matches[1]) * $qtyRaw;
+                    $kg = $grams / 1000;
+                    $key = $pid . '_0'; // Force to base product for kg custom weight
+                    $retMap[$key] = ($retMap[$key] ?? 0) + $kg;
+                } else {
+                    $key = $pid . '_' . $vid;
+                    $retMap[$key] = ($retMap[$key] ?? 0) + $qtyRaw;
+                }
             }
         }
 
@@ -169,33 +204,65 @@ class ReportingController extends Controller
             ->get();
         $mapPRAft = []; foreach($prAfter as $pr) { $mapPRAft[$pr->product_id . '_0'] = ($mapPRAft[$pr->product_id . '_0'] ?? 0) + $pr->total_qty; }
 
-        $allSalesAfterQ = DB::table('sales')->where('created_at', '>', $endDT)->whereNotNull('product')->select('product', 'qty');
+        $allSalesAfterQ = DB::table('sales')->where('created_at', '>', $endDT)->whereNotNull('product')->select('product', 'qty', 'color');
         if ($hasVariantIdInSales) { $allSalesAfterQ->addSelect('variant_id'); }
         $allSalesAfter = $allSalesAfterQ->get();
         
         $soldAftMap = [];
         foreach ($allSalesAfter as $s) {
             $pids = explode(',', $s->product); $qtys = explode(',', $s->qty); $vids = $hasVariantIdInSales ? explode(',', $s->variant_id ?? '') : [];
+            $colors = json_decode($s->color ?? '[]', true);
+            if (!is_array($colors)) $colors = [];
+            
             foreach ($pids as $idx => $pid) {
                 $pid = trim($pid); if ($pid === '') continue;
                 $vid = trim($vids[$idx] ?? '0'); if ($vid === '') $vid = '0';
-                $key = $pid . '_' . $vid;
-                $soldAftMap[$key] = ($soldAftMap[$key] ?? 0) + floatval($qtys[$idx] ?? 0);
+                $qtyRaw = floatval($qtys[$idx] ?? 0);
+                
+                $isGram = $isKgMap[$pid] ?? false;
+                $label = $colors[$idx] ?? '';
+                if (is_array($label)) $label = $label[0] ?? '';
+                
+                if ($isGram && preg_match('/^(\d+(?:\.\d+)?)\s*g/i', trim($label), $matches)) {
+                    $grams = floatval($matches[1]) * $qtyRaw;
+                    $kg = $grams / 1000;
+                    $key = $pid . '_0'; // force to base
+                    $soldAftMap[$key] = ($soldAftMap[$key] ?? 0) + $kg;
+                } else {
+                    $key = $pid . '_' . $vid;
+                    $soldAftMap[$key] = ($soldAftMap[$key] ?? 0) + $qtyRaw;
+                }
             }
         }
 
-        $allRetAfterQ = DB::table('sales_returns')->where('created_at', '>', $endDT)->whereNotNull('product')->select('product', 'qty');
+        $allRetAfterQ = DB::table('sales_returns')->where('created_at', '>', $endDT)->whereNotNull('product')->select('product', 'qty', 'color');
         if ($hasVariantIdInReturns) { $allRetAfterQ->addSelect('variant_id'); }
         $allRetAfter = $allRetAfterQ->get();
         
         $retAftMap = [];
         foreach ($allRetAfter as $r) {
             $pids = explode(',', $r->product); $qtys = explode(',', $r->qty); $vids = $hasVariantIdInReturns ? explode(',', $r->variant_id ?? '') : [];
+            $colors = json_decode($r->color ?? '[]', true);
+            if (!is_array($colors)) $colors = [];
+            
             foreach ($pids as $idx => $pid) {
                 $pid = trim($pid); if ($pid === '') continue;
                 $vid = trim($vids[$idx] ?? '0'); if ($vid === '') $vid = '0';
-                $key = $pid . '_' . $vid;
-                $retAftMap[$key] = ($retAftMap[$key] ?? 0) + floatval($qtys[$idx] ?? 0);
+                $qtyRaw = floatval($qtys[$idx] ?? 0);
+                
+                $isGram = $isKgMap[$pid] ?? false;
+                $label = $colors[$idx] ?? '';
+                if (is_array($label)) $label = $label[0] ?? '';
+                
+                if ($isGram && preg_match('/^(\d+(?:\.\d+)?)\s*g/i', trim($label), $matches)) {
+                    $grams = floatval($matches[1]) * $qtyRaw;
+                    $kg = $grams / 1000;
+                    $key = $pid . '_0'; // force to base
+                    $retAftMap[$key] = ($retAftMap[$key] ?? 0) + $kg;
+                } else {
+                    $key = $pid . '_' . $vid;
+                    $retAftMap[$key] = ($retAftMap[$key] ?? 0) + $qtyRaw;
+                }
             }
         }
 
