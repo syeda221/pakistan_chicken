@@ -663,23 +663,16 @@ function openSzModal(p) {
                     }
                 }
             }
+            let pricePerKg = variantKgSize > 0 ? (vPrice / variantKgSize) : vPrice;
             
             if (g > 0) {
-                let targetKg = g / 1000;
-                let qtyVal = targetKg / variantKgSize;
+                let calculatedPrice = (pricePerKg / 1000) * g;
                 
-                mQty.value = qtyVal.toFixed(4);
+                mLabel.value = g + 'g';
                 
-                let varName = (selVarI !== null && p.variants && p.variants[selVarI]) ? (p.variants[selVarI].size_label || p.variants[selVarI].name || '') : '';
-                let labelPrefix = varName ? (varName + ' ') : '';
-                mLabel.value = labelPrefix + g + 'g';
-                
-                if (vPrice > 0) {
-                    hPriceVal.value = Math.round(qtyVal * vPrice);
-                }
-                mPrice.value = vPrice;
+                hPriceVal.value = Math.round(calculatedPrice);
+                mPrice.value = parseFloat(calculatedPrice.toFixed(2));
             } else {
-                mQty.value = 1;
                 mLabel.value = originalLabel;
                 hPriceVal.value = '';
                 mPrice.value = vPrice;
@@ -708,22 +701,17 @@ function openSzModal(p) {
                     }
                 }
             }
+            let pricePerKg = variantKgSize > 0 ? (vPrice / variantKgSize) : vPrice;
             
-            if (pVal > 0 && vPrice > 0) {
-                let calculatedQty = pVal / vPrice; // number of packages
-                mQty.value = calculatedQty.toFixed(5); 
-                
-                let targetKg = calculatedQty * variantKgSize;
+            if (pVal > 0 && pricePerKg > 0) {
+                let targetKg = pVal / pricePerKg;
                 let g = Math.round(targetKg * 1000);
                 
-                let varName = (selVarI !== null && p.variants && p.variants[selVarI]) ? (p.variants[selVarI].size_label || p.variants[selVarI].name || '') : '';
-                let labelPrefix = varName ? (varName + ' ') : '';
-                mLabel.value = labelPrefix + g + 'g (' + pVal + ' Rs)';
+                mLabel.value = g + 'g (' + pVal + ' Rs)';
                 
                 hGrams.value = g;
-                mPrice.value = vPrice;
+                mPrice.value = pVal;
             } else if (pVal === 0) {
-                mQty.value = 1;
                 mLabel.value = originalLabel;
                 hGrams.value = '';
                 mPrice.value = vPrice;
