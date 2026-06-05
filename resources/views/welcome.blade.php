@@ -56,7 +56,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset("assets/images/hero_bakery.png") }}');
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset("assets/images/hero_chicken.png") }}');
             background-size: cover;
             background-position: center;
             transform: scale(1.1);
@@ -314,7 +314,7 @@
             <span class="brand-top">Since 1995</span>
             <h1>Pakistan Chicken </h1>
             <p class="hero-desc">
-                Experience the fine art of baking with our handcrafted sweets, gourmet pastries, and traditional delicacies made with the finest ingredients and timeless passion.
+                Experience the highest quality, farm-fresh chicken delivered daily. We pride ourselves on providing healthy, hygienically processed, and premium poultry for your family and business.
             </p>
             
             <div class="cta-container">
@@ -333,24 +333,24 @@
 
         <div class="features">
             <div class="feature-card">
-                <i class="fa-solid fa-wheat-awn"></i>
+                <i class="fa-solid fa-certificate"></i>
                 <div>
-                    <h3>Fine Ingredients</h3>
-                    <p>Only the best for you.</p>
+                    <h3>Premium Quality</h3>
+                    <p>Only the healthiest poultry.</p>
                 </div>
             </div>
             <div class="feature-card">
-                <i class="fa-solid fa-clock"></i>
+                <i class="fa-solid fa-truck-fast"></i>
                 <div>
                     <h3>Always Fresh</h3>
-                    <p>Baked daily with love.</p>
+                    <p>Sourced and delivered daily.</p>
                 </div>
             </div>
             <div class="feature-card">
-                <i class="fa-solid fa-medal"></i>
+                <i class="fa-solid fa-shield-halved"></i>
                 <div>
-                    <h3>Legacy Taste</h3>
-                    <p>Over 25 years of excellence.</p>
+                    <h3>Hygienic & Safe</h3>
+                    <p>100% clean processing standards.</p>
                 </div>
             </div>
         </div>
