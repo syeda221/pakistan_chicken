@@ -267,14 +267,16 @@
                         </div>
                     </div>
                     <div class="row g-2">
-                        <div class="col-4"><label class="form-label">Label</label>
+                        <div class="col-3"><label class="form-label">Label</label>
                             <input type="text" id="mLabel" class="form-control" placeholder="e.g. 300g"></div>
                         <div class="col-2"><label class="form-label">Qty</label>
                             <input type="number" id="mQty" class="form-control" value="1" min="0.001" step="any"></div>
                         <div class="col-3"><label class="form-label">Unit Price (Rs)</label>
                             <input type="number" id="mPrice" class="form-control" value="0" min="0" step="any"></div>
-                        <div class="col-3"><label class="form-label">Discount</label>
-                            <input type="text" id="mDisc" class="form-control" value="0" placeholder="0 or 10%"></div>
+                        <div class="col-2"><label class="form-label">Disc (%)</label>
+                            <input type="number" id="mDiscPerc" class="form-control" value="0" min="0" max="100"></div>
+                        <div class="col-2"><label class="form-label">Disc (Rs)</label>
+                            <input type="number" id="mDiscRs" class="form-control" value="0" min="0"></div>
                     </div>
                 </div>
                 <button class="btn-add-o" onclick="addToOrder()"><i class="la la-plus-circle"></i> Add to Order</button>
@@ -622,7 +624,7 @@ function openSzModal(p) {
     document.getElementById('szTitle').textContent='📦 Size — '+p.item_name;
     document.getElementById('szGrid').innerHTML='<div class="text-center py-3 text-muted"><i class="la la-spinner la-spin" style="font-size:24px"></i></div>';
     document.getElementById('mLabel').value=''; document.getElementById('mQty').value=1;
-    document.getElementById('mPrice').value=p.price; document.getElementById('mDisc').value=0;
+    document.getElementById('mPrice').value=p.price; document.getElementById('mDiscPerc').value=0; document.getElementById('mDiscRs').value=0;
     showModal('szModal');
     
     // KG Helpers logic
@@ -820,7 +822,7 @@ function openSingleModal(p) {
     document.getElementById('szTitle').textContent='➕ Add — '+p.item_name;
     document.getElementById('szGrid').innerHTML='';
     document.getElementById('mLabel').value=p.item_name; document.getElementById('mQty').value=1;
-    document.getElementById('mPrice').value=p.price; document.getElementById('mDisc').value=0;
+    document.getElementById('mPrice').value=p.price; document.getElementById('mDiscPerc').value=0; document.getElementById('mDiscRs').value=0;
     showModal('szModal');
 }
 
@@ -832,7 +834,13 @@ function addToOrder() {
     let label = (document.getElementById('mLabel').value || '').trim();
     let qty   = parseFloat(document.getElementById('mQty').value) || 0;
     let price = parseFloat(document.getElementById('mPrice').value) || 0;
-    let disc  = (document.getElementById('mDisc').value || '0').trim();
+    
+    let discPerc = parseFloat(document.getElementById('mDiscPerc').value) || 0;
+    let discRs   = parseFloat(document.getElementById('mDiscRs').value) || 0;
+    let disc = '';
+    if (discPerc > 0) disc = discPerc + '%';
+    else if (discRs > 0) disc = discRs;
+    else disc = '0';
 
     // Fallback label
     if (!label) {
@@ -936,7 +944,12 @@ function renderCart() {
 
         const subDiv = document.createElement('div');
         subDiv.className = 'oi-sub';
-        subDiv.textContent = (item.label && item.label !== item.name) ? ('📦 ' + item.label) : '';
+        let subText = (item.label && item.label !== item.name) ? ('📦 ' + item.label) : '';
+        if (item.disc && item.disc !== '0') {
+            if (subText) subText += ' | ';
+            subText += '<span style="color:#e74c3c;font-weight:bold;">Disc: ' + item.disc + '</span>';
+        }
+        subDiv.innerHTML = subText;
 
         const ctrlDiv = document.createElement('div');
         ctrlDiv.className = 'oi-ctrl';

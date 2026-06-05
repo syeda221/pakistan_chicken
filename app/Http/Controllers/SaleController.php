@@ -1307,7 +1307,7 @@ class SaleController extends Controller
                 'brand'         => $product->brand->name ?? ($brands[$index] ?? ''),
                 'unit'          => ($product->unit ? $product->unit->name : null) ?? ($units[$index] ?? ''),
                 'price'         => floatval($prices[$index] ?? 0),
-                'discount'      => floatval($discounts[$index] ?? 0),
+                'discount'      => $discounts[$index] ?? '0',
                 'qty'           => $soldQty,
                 'total'         => floatval($totals[$index] ?? 0),
                 // send note (plain text) so blade can show it

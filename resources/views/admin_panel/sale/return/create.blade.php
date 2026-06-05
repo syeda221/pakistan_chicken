@@ -233,7 +233,7 @@
             const uniqueId = productId + '_' + variantId;
             const price = num($row.data('price'));
             const unit = $row.data('unit') || '';
-            const itemDisc = num($row.data('item-disc'));
+            const itemDiscRaw = String($row.data('item-disc') || '0').trim();
             const productName = $row.find('td').eq(1).text().trim();
             const itemCode = $row.find('td').eq(2).text().trim();
             const brand = $row.find('td').eq(4).text().trim();
@@ -262,6 +262,13 @@
                 if ($('#returnItemsTable tbody tr[data-unique-id="' + uniqueId + '"]').length) return;
 
                 const returnQtyDefault = Math.min(availableQty, 1);
+                
+                let calculatedDisc = 0;
+                if (itemDiscRaw.endsWith('%')) {
+                    calculatedDisc = price * (parseFloat(itemDiscRaw)/100) * returnQtyDefault;
+                } else {
+                    calculatedDisc = (parseFloat(itemDiscRaw)||0) * returnQtyDefault;
+                }
 
                 // Build return row with textarea for note (and keep name color[] for backend)
                 const rowHtml = `
@@ -289,7 +296,7 @@
         <input type="number" step="any" name="price[]" class="form-control form-control-sm price-input" value="${price}">
     </td>
     <td>
-        <input type="number" step="any" name="item_disc[]" class="form-control form-control-sm disc-input" value="${itemDisc}">
+        <input type="text" name="item_disc[]" class="form-control form-control-sm disc-input" value="${itemDiscRaw}">
     </td>
     <td>
         <div class="input-group input-group-sm">
@@ -299,7 +306,7 @@
         <div class="small-muted">Max: <span class="max-qty">${availableQty}</span></div>
     </td>
     <td>
-        <input type="text" name="total[]" class="form-control form-control-sm row-total" value="${(price*returnQtyDefault - itemDisc).toFixed(2)}" readonly>
+        <input type="text" name="total[]" class="form-control form-control-sm row-total" value="${(price*returnQtyDefault - calculatedDisc).toFixed(2)}" readonly>
     </td>
     <td>
         <button type="button" class="btn btn-sm btn-danger remove-return-item">X</button>
@@ -351,7 +358,7 @@
             const variantId = $row.data('variant-id');
             let qty = num($row.find('.qty-input').val());
             const price = num($row.find('.price-input').val());
-            const disc = num($row.find('.disc-input').val());
+            const discRaw = String($row.find('.disc-input').val() || '0').trim();
             const max = num($row.find('.qty-input').attr('max'));
 
             if ($(this).val() === "") {
@@ -360,8 +367,15 @@
                 qty = max;
                 $row.find('.qty-input').val(max);
             }
+            
+            let calcDisc = 0;
+            if (discRaw.endsWith('%')) {
+                calcDisc = price * (parseFloat(discRaw)/100) * qty;
+            } else {
+                calcDisc = (parseFloat(discRaw)||0) * qty;
+            }
 
-            const newTotal = Math.max(0, (price * qty) - disc);
+            const newTotal = Math.max(0, (price * qty) - calcDisc);
             $row.find('.row-total').val(newTotal.toFixed(2));
 
             // update available = max - qty
@@ -382,15 +396,26 @@
                 itemDiscount = 0,
                 totalQty = 0;
             $('#returnItemsTable tbody tr').each(function() {
+                const rPrice = num($(this).find('.price-input').val());
+                const rQty = num($(this).find('.qty-input').val());
+                const rDiscRaw = String($(this).find('.disc-input').val() || '0').trim();
+                
+                let calcDisc = 0;
+                if (rDiscRaw.endsWith('%')) {
+                    calcDisc = rPrice * (parseFloat(rDiscRaw)/100) * rQty;
+                } else {
+                    calcDisc = (parseFloat(rDiscRaw)||0) * rQty;
+                }
+                
                 billAmount += num($(this).find('.row-total').val());
-                itemDiscount += num($(this).find('.disc-input').val());
-                totalQty += num($(this).find('.qty-input').val());
+                itemDiscount += calcDisc;
+                totalQty += rQty;
             });
 
             const extraDiscount = num($('#extraDiscount').val());
             const cash = num($('#cash').val());
             const card = num($('#card').val());
-            const net = Math.max(0, billAmount - itemDiscount - extraDiscount);
+            const net = Math.max(0, billAmount - extraDiscount);
             const change = (cash + card) - net;
 
             $('#billAmount').val(billAmount.toFixed(2));
