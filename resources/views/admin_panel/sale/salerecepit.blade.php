@@ -119,7 +119,7 @@
         @if(isset($sale->order_type) && $sale->order_type == 'Dine-in' && $sale->table_id)
         <tr><th>Table No:</th><td>{{ $sale->table->table_name ?? 'N/A' }}</td></tr>
         @endif
-        <tr><th>Print Time:</th><td>{{ \Carbon\Carbon::parse($sale->created_at)->format('d-m-Y H:i:s') }}</td></tr>
+        <tr><th>Date & Time:</th><td>{{ \Carbon\Carbon::parse($sale->created_at)->format('d-m-Y') }}<br>{{ \Carbon\Carbon::parse($sale->created_at)->format('h:i A') }}</td></tr>
     </table>
 
     <div class="line"></div>

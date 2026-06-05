@@ -284,8 +284,8 @@
                   <td>: {{ $sale->invoice_no ?? 'N/A' }}</td>
               </tr>
               <tr>
-                  <th>Date</th>
-                  <td>: {{ optional($sale->created_at)->format('d-M-Y h:i A') }}</td>
+                  <th>Date & Time</th>
+                  <td>: {{ optional($sale->created_at)->format('d-M-Y') }}<br>&nbsp;&nbsp;{{ optional($sale->created_at)->format('h:i A') }}</td>
               </tr>
           </table>
           <div class="line"></div>
@@ -348,8 +348,8 @@
       </tr>
       @endif
       <tr>
-        <th>Invoice Date</th>
-        <td>: {{ optional($sale->created_at)->format('D, d-M-Y h:i A') }}</td>
+        <th>Date & Time</th>
+        <td>: {{ optional($sale->created_at)->format('d-M-Y') }}<br>&nbsp;&nbsp;{{ optional($sale->created_at)->format('h:i A') }}</td>
       </tr>
     </table>
 

@@ -664,7 +664,10 @@ class SaleController extends Controller
 
                 if ($isGram) {
                     $dbVariantId = null; // Always deduct from main product for KG
-                    if ($vId) {
+                    $label = $colors[$index] ?? '';
+                    if (preg_match('/^(\d+(?:\.\d+)?)\s*g/i', trim($label), $matches)) {
+                        $deductQty = floatval($matches[1]) * $qty;
+                    } elseif ($vId) {
                         $vModel = \App\Models\ProductVariant::find($vId);
                         if ($vModel) {
                             $kgSize = floatval($vModel->size_value);
@@ -1571,7 +1574,16 @@ class SaleController extends Controller
 
                     if ($isKg) {
                         $stockQuery->whereNull('variant_id');
-                        if (!empty($vId)) {
+                        
+                        $label = '';
+                        $parsedColor = json_decode(end($combined_colors), true);
+                        if (is_array($parsedColor) && count($parsedColor) > 0) {
+                            $label = $parsedColor[0];
+                        }
+
+                        if (preg_match('/^(\d+(?:\.\d+)?)\s*g/i', trim($label), $matches)) {
+                            $returnQtyInDb = floatval($matches[1]) * $qty;
+                        } elseif (!empty($vId)) {
                             $vModel = \App\Models\ProductVariant::find($vId);
                             if ($vModel) {
                                 $kgSize = floatval($vModel->size_value);
