@@ -79,12 +79,20 @@ class ReportingController extends Controller
             ->select('product_id', 'variant_id', 'qty')
             ->get();
 
+        $currWarehouseStocks = DB::table('warehouse_stocks')
+            ->whereIn('product_id', $productIds)
+            ->select('product_id', 'variant_id', 'quantity as qty')
+            ->get();
+
         // Mapping helper: key = pid_vid (use 0 for null variant)
         $mapP = []; foreach($purchases as $p) { $mapP[$p->product_id . '_' . ($p->variant_id ?? 0)] = $p->total_qty; }
         $mapProd = []; foreach($productions as $pd) { $mapProd[$pd->product_id . '_' . ($pd->variant_id ?? 0)] = ($mapProd[$pd->product_id . '_' . ($pd->variant_id ?? 0)] ?? 0) + $pd->total_qty; }
         // purchase_return_items has no variant_id — map by product only (key pid_0)
         $mapPR = []; foreach($purchaseReturns as $pr) { $mapPR[$pr->product_id . '_0'] = ($mapPR[$pr->product_id . '_0'] ?? 0) + $pr->total_qty; }
-        $mapS = []; foreach($currStocks as $cs) { $mapS[$cs->product_id . '_' . ($cs->variant_id ?? 0)] = ($mapS[$cs->product_id . '_' . ($cs->variant_id ?? 0)] ?? 0) + $cs->qty; }
+        
+        $mapS = []; 
+        foreach($currStocks as $cs) { $mapS[$cs->product_id . '_' . ($cs->variant_id ?? 0)] = ($mapS[$cs->product_id . '_' . ($cs->variant_id ?? 0)] ?? 0) + $cs->qty; }
+        foreach($currWarehouseStocks as $cws) { $mapS[$cws->product_id . '_' . ($cws->variant_id ?? 0)] = ($mapS[$cws->product_id . '_' . ($cws->variant_id ?? 0)] ?? 0) + $cws->qty; }
 
         // Sales processing (by product and variant) with DATE filter
         $hasVariantIdInSales = \Illuminate\Support\Facades\Schema::hasColumn('sales', 'variant_id');
@@ -320,10 +328,12 @@ class ReportingController extends Controller
                     $purchased = $purchased_kg * 1000;
                     $sold      = $rawSold * 1000;
                     $sReturn   = $rawSReturn * 1000;
+                    $pReturn   = $pReturn * 1000;
 
                     $purchAft = $purchAft_kg * 1000;
                     $soldAft  = $rawSoldAft * 1000;
                     $sRetAft  = $rawSRetAft * 1000;
+                    $prAft    = $prAft * 1000;
                 } else {
                     $purchased = $purchased_kg;
                     $sold      = $rawSold;
